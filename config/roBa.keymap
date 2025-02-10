@@ -7,6 +7,9 @@
 #define SCROLL 4
 #define NUM 1
 
+#define U_MOUSE_MOVE_MAX 900
+#define U_MOUSE_SCROLL_MAX 8
+
 &mt {
     flavor = "balanced";
     quick-tap-ms = <0>;
