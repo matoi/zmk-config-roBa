@@ -10,8 +10,8 @@
 #define U_MOUSE_SCROLL_MAX 8
 
 &mt {
-    flavor = "balanced";
-    quick-tap-ms = <0>;
+    flavor = "tap-preferred";
+    quick-tap-ms = <150>;
 };
 
 / {
