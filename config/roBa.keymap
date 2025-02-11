@@ -103,7 +103,7 @@
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
             quick-tap-ms = <150>;
-            retro-tap;
+            require-prior-idle-ms = <125>;
         };
 
         qt_mt: qt_mt {
@@ -113,8 +113,9 @@
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
             quick-tap-ms = <150>;
-            retro-tap;
             bindings = <&kp>, <&kp>;
+
+            require-prior-idle-ms = <125>;
         };
 
         scrl_mo: scrl_mo {
@@ -126,6 +127,7 @@
             tapping-term-ms = <150>;
             flavor = "tap-preferred";
             quick-tap-ms = <150>;
+            require-prior-idle-ms = <125>;
         };
 
         thumb_mt: thumb_mt {
