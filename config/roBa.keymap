@@ -94,7 +94,7 @@
             flavor = "tap-unless-interrupted";
         };
 
-        quantum_momentary_layer: quantum_momentary_layer {
+        qt_mo: qt_mo {
             compatible = "zmk,behavior-hold-tap";
             label = "QUANTUM_MOMENTARY_LAYER";
             bindings = <&mo>, <&to_layer_0>;
@@ -106,7 +106,7 @@
             retro-tap;
         };
 
-        quantum_mod_tap: quantum_mod_tap {
+        qt_mt: qt_mt {
             compatible = "zmk,behavior-hold-tap";
             label = "QUANTUM_MOD_TAP";
             #binding-cells = <2>;
@@ -117,9 +117,9 @@
             bindings = <&kp>, <&kp>;
         };
 
-        scroll_layer: scroll_layer {
+        scrl_mo: scrl_mo {
             compatible = "zmk,behavior-hold-tap";
-            label = "SCROLL_LAYER";
+            label = "MOMENTARY_SCROLL";
             bindings = <&mo>, <&to_layer_0>;
 
             #binding-cells = <2>;
@@ -128,7 +128,7 @@
             quick-tap-ms = <150>;
         };
 
-        thumb_mod_tap: thumb_mod_tap {
+        thumb_mt: thumb_mt {
             compatible = "zmk,behavior-hold-tap";
             label = "THUMB_MOD_TAP";
             #binding-cells = <2>;
@@ -138,7 +138,7 @@
             bindings = <&kp>, <&kp>;
         };
 
-        thumb_momentary_layer: thumb_momentary_layer {
+        thumb_mo: thumb_mo {
             compatible = "zmk,behavior-hold-tap";
             label = "THUMB_MOMENTARY_LAYER";
             #binding-cells = <2>;
@@ -154,10 +154,10 @@
 
         default_layer {
             bindings = <
-&kp Q                           &kp W      &kp E      &kp R         &kp T                                                                                              &kp Y                           &kp U  &kp I              &kp O                         &kp P
-&quantum_mod_tap LCTRL A        &kp S      &kp D      &kp F         &kp G                           &kp LEFT_BRACKET                   &kp SINGLE_QUOTE                &kp H                           &kp J  &scroll_layer 4 K  &quantum_momentary_layer 3 L  &quantum_mod_tap RCTRL SEMI
-&quantum_mod_tap LEFT_SHIFT Z   &kp X      &kp C      &kp V         &kp B                           &kp RIGHT_BRACKET                  &kp EQUAL                       &kp N                           &kp M  &kp COMMA          &kp DOT                       &quantum_mod_tap RIGHT_SHIFT SLASH
-&quantum_momentary_layer 1 TAB  &kp GRAVE  &kp MINUS  &kp LEFT_ALT  &thumb_momentary_layer 2 ENTER  &thumb_mod_tap LEFT_GUI SPACE      &thumb_mod_tap RIGHT_GUI SPACE  &thumb_momentary_layer 1 ENTER                                                          &kp BACKSLASH
+&kp Q                &kp W      &kp E      &kp R         &kp T                                                                       &kp Y              &kp U  &kp I         &kp O       &kp P
+&qt_mt LCTRL A       &kp S      &kp D      &kp F         &kp G              &kp LEFT_BRACKET              &kp SINGLE_QUOTE           &kp H              &kp J  &scrl_mo 4 K  &qt_mo 3 L  &qt_mt RCTRL SEMI
+&qt_mt LEFT_SHIFT Z  &kp X      &kp C      &kp V         &kp B              &kp RIGHT_BRACKET             &kp EQUAL                  &kp N              &kp M  &kp COMMA     &kp DOT     &qt_mt RIGHT_SHIFT SLASH
+&kp TAB              &kp GRAVE  &kp MINUS  &kp LEFT_ALT  &thumb_mo 2 ENTER  &thumb_mt LEFT_GUI SPACE      &thumb_mt RIGHT_GUI SPACE  &thumb_mo 1 ENTER                                   &kp BACKSLASH
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
