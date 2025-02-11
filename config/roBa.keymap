@@ -110,10 +110,10 @@
 
         NUM {
             bindings = <
-&kp NUMBER_1  &kp NUMBER_2          &kp NUMBER_3          &kp NUMBER_4          &kp N5                                           &kp NUMBER_6  &kp N7          &kp N8          &kp N9        &kp N0
-&kp EXCL      &kp AT                &kp POUND             &kp DOLLAR            &kp PERCENT           &kp LG(TAB)        &trans  &kp CARET     &kp AMPS        &kp ASTRK       &kp LPAR      &kp RPAR
-&trans        &kp LA(LG(NUMBER_1))  &kp LA(LG(NUMBER_2))  &kp LA(LG(NUMBER_3))  &kp LA(LG(NUMBER_6))  &kp LG(GRAVE)      &trans  &trans        &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT
-&trans        &trans                &trans                &trans                &trans                &trans             &trans  &trans                                                      &trans
+&kp NUMBER_1  &kp NUMBER_2          &kp NUMBER_3          &kp NUMBER_4          &kp N5                                    &kp NUMBER_6  &kp N7          &kp N8          &kp N9        &kp N0
+&kp EXCL      &kp AT                &kp POUND             &kp DOLLAR            &kp PERCENT           &trans      &trans  &kp CARET     &kp AMPS        &kp ASTRK       &kp LPAR      &kp RPAR
+&trans        &kp LA(LG(NUMBER_1))  &kp LA(LG(NUMBER_2))  &kp LA(LG(NUMBER_3))  &kp LA(LG(NUMBER_6))  &trans      &trans  &trans        &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT
+&trans        &trans                &trans                &trans                &trans                &trans      &trans  &trans                                                      &trans
             >;
         };
 
