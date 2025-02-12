@@ -72,6 +72,16 @@
             bindings = <&mkp MB3>;
             key-positions = <29 30>;
         };
+
+        to_jp {
+            bindings = <&kp LS(LC(J))>;
+            key-positions = <24 25>;
+        };
+
+        to_en {
+            bindings = <&kp LS(LC(J))>;
+            key-positions = <24 26>;
+        };
     };
 
     macros {
