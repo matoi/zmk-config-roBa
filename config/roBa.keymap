@@ -79,8 +79,8 @@
         };
 
         to_en {
-            bindings = <&kp LS(LC(J))>;
-            key-positions = <24 26>;
+            bindings = <&kp LC(LS(SEMICOLON))>;
+            key-positions = <25 23>;
         };
     };
 
