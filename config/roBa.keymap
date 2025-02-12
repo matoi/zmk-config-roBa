@@ -28,16 +28,6 @@
             key-positions = <18 19>;
         };
 
-        l_space {
-            bindings = <&kp SPACE>;
-            key-positions = <25 24>;
-        };
-
-        r_space {
-            bindings = <&kp SPACE>;
-            key-positions = <30 31>;
-        };
-
         l_launcher {
             bindings = <&kp F5>;
             key-positions = <13 14>;
@@ -58,11 +48,6 @@
             key-positions = <0 1>;
         };
 
-        ctrl-tab {
-            bindings = <&kp LC(TAB)>;
-            key-positions = <10 0>;
-        };
-
         l_config {
             bindings = <&mo 5>;
             key-positions = <34 35>;
@@ -71,6 +56,21 @@
         r_config {
             bindings = <&mo 5>;
             key-positions = <42 32>;
+        };
+
+        mb1 {
+            bindings = <&mkp MB1>;
+            key-positions = <30 31>;
+        };
+
+        mb2 {
+            bindings = <&mkp MB2>;
+            key-positions = <31 32>;
+        };
+
+        mb3 {
+            bindings = <&mkp MB3>;
+            key-positions = <29 30>;
         };
     };
 
