@@ -300,10 +300,10 @@
 
         EMACS_NAV {
             bindings = <
-&trans  &trans     &kp LG(P)  &trans     &trans                                                   &trans         &kp LC(U)  &kp LC(P)          &kp LA(SQT)         &kp LA(MINUS)
-&trans  &kp LG(B)  &kp LG(N)  &kp LG(F)  &trans     &kp LS(RA(LEFT_BRACKET))       &trans         &trans         &kp LC(B)  &kp LC(N)          &kp LC(F)           &kp LA(SEMICOLON)
-&trans  &trans     &trans     &kp LC(V)  &kp LG(V)  &kp LS(RA(RIGHT_BRACKET))      &trans         &trans         &trans     &kp LS(LG(COMMA))  &kp LS(LG(PERIOD))  &trans
-&trans  &trans     &trans     &trans     &trans     &trans                         &kp LC(SPACE)  &kp LG(SPACE)                                                    &trans
+&trans  &trans     &kp LG(P)  &trans     &trans                                                           &kp LC(U)      &trans     &kp LC(P)          &kp LA(SQT)         &kp LA(MINUS)
+&trans  &kp LG(B)  &kp LG(N)  &kp LG(F)  &trans     &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &trans         &kp LC(B)  &kp LC(N)          &kp LC(F)           &kp LA(SEMICOLON)
+&trans  &trans     &trans     &kp LC(V)  &kp LG(V)  &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &trans         &trans     &kp LS(LG(COMMA))  &kp LS(LG(PERIOD))  &trans
+&trans  &trans     &trans     &trans     &trans     &trans                     &kp LC(SPACE)              &kp LG(SPACE)                                                    &trans
             >;
         };
     };
