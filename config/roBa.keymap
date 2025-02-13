@@ -97,6 +97,12 @@
             bindings = <&kp BACKSLASH>;
             key-positions = <32 33>;
         };
+
+        meta-v {
+            bindings = <&kp LG(V)>;
+            key-positions = <24 25>;
+            layers = <7>;
+        };
     };
 
     macros {
@@ -238,7 +244,7 @@
 &kp Q               &kp W             &kp E             &kp R          &kp T                                                     &kp Y            &kp U          &kp I              &kp O              &kp P
 &l_mt LEFT_SHIFT A  &l_mt LEFT_ALT S  &l_mt LEFT_GUI D  &l_mt LCTRL F  &kp G            &kp LEFT_BRACKET       &kp SINGLE_QUOTE  &kp H            &r_mt RCTRL J  &r_mt RIGHT_GUI K  &r_mt RIGHT_ALT L  &r_mt RIGHT_SHIFT SEMI
 &kp Z               &kp X             &kp C             &kp V          &kp B            &kp RIGHT_BRACKET      &kp EQUAL         &kp N            &kp M          &kp COMMA          &kp DOT            &kp SLASH
-&kp TAB             &kp GRAVE         &kp MINUS         &kp LEFT_ALT   &thm_mo 2 ENTER  &thm_mo 6 SPACE        &thm_mo 6 SPACE   &thm_mo 1 ENTER                                                       &scrl_mo 4 BACKSLASH
+&kp TAB             &kp GRAVE         &kp MINUS         &kp LEFT_ALT   &thm_mo 2 ENTER  &thm_mo 7 SPACE        &thm_mo 6 SPACE   &thm_mo 1 ENTER                                                       &scrl_mo 4 BACKSLASH
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
@@ -295,6 +301,15 @@
 &kp LA(LG(LCTRL))     &kp LA(LEFT_GUI)      &kp LA(LCTRL)         &kp LG(LCTRL)         &kp F5                &kp LG(LEFT_BRACKET)       &trans  &trans                &kp RA(RG(LEFT_ARROW))  &trans              &trans            &kp RA(RG(RIGHT))
 &trans                &kp LA(LG(NUMBER_1))  &kp LA(LG(NUMBER_2))  &kp LA(LG(NUMBER_3))  &kp LA(LG(NUMBER_6))  &kp LG(RIGHT_BRACKET)      &trans  &trans                &kp RC(LEFT_ARROW)      &kp RC(DOWN_ARROW)  &kp RC(UP_ARROW)  &kp RC(RIGHT)
 &trans                &trans                &trans                &trans                &trans                &trans                     &trans  &trans                                                                              &trans
+            >;
+        };
+
+        EMACS_NAV {
+            bindings = <
+&trans     &trans     &trans     &trans     &trans                      &trans  &trans     &trans             &trans              &trans
+&kp LG(B)  &kp LG(N)  &kp LG(P)  &kp LG(F)  &trans  &trans      &trans  &trans  &kp LC(B)  &kp LC(N)          &kp LC(P)           &kp LC(F)
+&trans     &trans     &trans     &kp LC(V)  &trans  &trans      &trans  &trans  &trans     &kp LS(LG(COMMA))  &kp LS(LG(PERIOD))  &trans
+&trans     &trans     &trans     &trans     &trans  &trans      &trans  &trans                                                    &trans
             >;
         };
     };
