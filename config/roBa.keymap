@@ -291,10 +291,10 @@
 
         NAV {
             bindings = <
-&kp LC(LG(NUMBER_1))  &kp LC(LG(NUMBER_2))  &kp LC(LG(NUMBER_3))  &kp LC(LG(NUMBER_4))  &kp LC(LG(N5))                                     &kp LC(LG(NUMBER_6))  &kp LC(LG(N7))  &kp LC(LG(N8))  &kp LC(LG(N9))  &kp LC(LG(N0))
-&kp LA(LG(LCTRL))     &kp LA(LEFT_GUI)      &kp LA(LCTRL)         &kp LG(LCTRL)         &trans          &kp LG(LEFT_BRACKET)       &trans  &trans                &trans          &trans          &trans          &trans
-&trans                &trans                &trans                &trans                &trans          &kp LG(RIGHT_BRACKET)      &trans  &trans                &trans          &trans          &trans          &trans
-&trans                &trans                &trans                &trans                &trans          &trans                     &trans  &trans                                                                &trans
+&kp LC(LG(NUMBER_1))  &kp LC(LG(NUMBER_2))  &kp LC(LG(NUMBER_3))  &kp LC(LG(NUMBER_4))  &kp LC(LG(N5))                                           &kp LC(LG(NUMBER_6))  &kp LC(LG(N7))          &kp LC(LG(N8))      &kp LC(LG(N9))    &kp LC(LG(N0))
+&kp LA(LG(LCTRL))     &kp LA(LEFT_GUI)      &kp LA(LCTRL)         &kp LG(LCTRL)         &kp F5                &kp LG(LEFT_BRACKET)       &trans  &trans                &kp RA(RG(LEFT_ARROW))  &trans              &trans            &kp RA(RG(RIGHT))
+&trans                &kp LA(LG(NUMBER_1))  &kp LA(LG(NUMBER_2))  &kp LA(LG(NUMBER_3))  &kp LA(LG(NUMBER_6))  &kp LG(RIGHT_BRACKET)      &trans  &trans                &kp RC(LEFT_ARROW)      &kp RC(DOWN_ARROW)  &kp RC(UP_ARROW)  &kp RC(RIGHT)
+&trans                &trans                &trans                &trans                &trans                &trans                     &trans  &trans                                                                              &trans
             >;
         };
     };
