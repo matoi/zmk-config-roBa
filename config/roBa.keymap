@@ -300,8 +300,8 @@
 
         EMACS_NAV {
             bindings = <
-&trans  &trans     &kp LG(P)  &trans     &trans                                &trans         &kp LC(U)  &kp LC(P)          &trans              &trans
-&trans  &kp LG(B)  &kp LG(N)  &kp LG(F)  &trans     &trans      &trans         &trans         &kp LC(B)  &kp LC(N)          &kp LC(F)           &trans
+&trans  &trans     &kp LG(P)  &trans     &trans                                &trans         &kp LC(U)  &kp LC(P)          &kp LG(SQT)         &kp LG(MINUS)
+&trans  &kp LG(B)  &kp LG(N)  &kp LG(F)  &trans     &trans      &trans         &trans         &kp LC(B)  &kp LC(N)          &kp LC(F)           &kp LG(SEMICOLON)
 &trans  &trans     &trans     &kp LC(V)  &kp LG(V)  &trans      &trans         &trans         &trans     &kp LS(LG(COMMA))  &kp LS(LG(PERIOD))  &trans
 &trans  &trans     &trans     &trans     &trans     &trans      &kp LC(SPACE)  &kp LG(SPACE)                                                    &trans
             >;
