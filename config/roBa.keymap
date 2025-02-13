@@ -306,10 +306,10 @@
 
         EMACS_NAV {
             bindings = <
-&trans     &trans     &trans     &trans     &trans                      &trans  &trans     &trans             &trans              &trans
-&kp LG(B)  &kp LG(N)  &kp LG(P)  &kp LG(F)  &trans  &trans      &trans  &trans  &kp LC(B)  &kp LC(N)          &kp LC(P)           &kp LC(F)
-&trans     &trans     &trans     &kp LC(V)  &trans  &trans      &trans  &trans  &trans     &kp LS(LG(COMMA))  &kp LS(LG(PERIOD))  &trans
-&trans     &trans     &trans     &trans     &trans  &trans      &trans  &trans                                                    &trans
+&trans  &trans     &kp LG(P)  &trans     &trans                             &trans         &kp LC(U)  &kp LC(P)          &trans              &trans
+&trans  &kp LG(B)  &kp LG(N)  &kp LG(F)  &trans  &trans      &trans         &trans         &kp LC(B)  &kp LC(N)          &kp LC(P)           &trans
+&trans  &trans     &trans     &kp LC(V)  &trans  &trans      &trans         &trans         &trans     &kp LS(LG(COMMA))  &kp LS(LG(PERIOD))  &trans
+&trans  &trans     &trans     &trans     &trans  &trans      &kp LC(SPACE)  &kp LG(SPACE)                                                    &trans
             >;
         };
     };
