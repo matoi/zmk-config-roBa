@@ -300,10 +300,10 @@
 
         EMACS_NAV {
             bindings = <
-&kp LC(LS(TAB))  &trans     &kp LG(P)  &trans     &trans                                                           &kp LC(U)      &trans     &kp LC(P)          &kp LA(SQT)         &kp LA(MINUS)
-&kp LC(TAB)      &kp LG(B)  &kp LG(N)  &kp LG(F)  &trans     &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &trans         &kp LC(B)  &kp LC(N)          &kp LC(F)           &kp LA(SEMICOLON)
-&kp LA(LG(Z))    &trans     &trans     &kp LC(V)  &kp LG(V)  &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &trans         &trans     &kp LS(LG(COMMA))  &kp LS(LG(PERIOD))  &trans
-&kp LA(LG(X))    &trans     &trans     &trans     &trans     &trans                     &kp LC(SPACE)              &kp LG(SPACE)                                                    &trans
+&kp LC(LS(TAB))  &trans         &kp LG(P)      &trans     &trans                                                           &kp LC(U)      &trans     &kp LC(P)          &kp LA(SQT)         &kp LA(MINUS)
+&kp LC(TAB)      &kp LG(B)      &kp LG(N)      &kp LG(F)  &trans     &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &trans         &kp LC(B)  &kp LC(N)          &kp LC(F)           &kp LA(SEMICOLON)
+&kp LA(LG(Z))    &kp LA(LG(X))  &kp LA(GRAVE)  &kp LC(V)  &kp LG(V)  &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &trans         &trans     &kp LS(LG(COMMA))  &kp LS(LG(PERIOD))  &trans
+&trans           &trans         &trans         &trans     &trans     &trans                     &kp LC(SPACE)              &kp LG(SPACE)                                                    &trans
             >;
         };
     };
