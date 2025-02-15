@@ -310,6 +310,16 @@
             mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)>;
             keep-mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)>;
         };
+
+        thm_mo_sl: thm_mo_sl {
+            compatible = "zmk,behavior-hold-tap";
+            label = "THM_MO_SL";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
+            quick-tap-ms = <150>;
+            bindings = <&mo>, <&sl>;
+        };
     };
 
     keymap {
@@ -320,7 +330,7 @@
 &kp Q               &kp W             &kp E             &kp R             &kp T                                                    &kp Y            &kp U              &kp I          &kp O              &kp P
 &l_mt LEFT_SHIFT A  &l_mt LEFT_ALT S  &l_mt LCTRL D     &l_mt LEFT_GUI F  &kp G            &kp LEFT_BRACKET       &kp MINUS        &kp H            &r_mt RIGHT_GUI J  &r_mt RCTRL K  &r_mt RIGHT_ALT L  &r_mt RIGHT_SHIFT SEMI
 &kp Z               &kp X             &kp C             &kp V             &kp B            &kp RIGHT_BRACKET      &kp EQUAL        &kp N            &kp M              &kp COMMA      &kp DOT            &scrl_mo 4 SLASH
-&kp TAB             &kp GRAVE         &kp SINGLE_QUOTE  &thm_mo 6 ESCAPE  &thm_mo 2 SPACE  &thm_mo 7 ENTER        &thm_mo 8 ENTER  &thm_mo 1 SPACE                                                       &scrl_mo 4 BACKSLASH
+&kp TAB             &kp GRAVE         &kp SINGLE_QUOTE  &thm_mo_sl 6 6    &thm_mo 2 SPACE  &thm_mo 7 ENTER        &thm_mo 8 ENTER  &thm_mo 1 SPACE                                                       &scrl_mo 4 BACKSLASH
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
@@ -373,19 +383,19 @@
 
         WIN_NAV {
             bindings = <
-&kp LG(LA(Z))               &kp LC(LG(N7))                   &kp LC(LG(N8))          &kp LC(LG(N9))             &kp LC(LG(N0))                                     &kp LG(LA(NUMBER_6))  &kp LG(LA(NUMBER_1))    &kp LG(LA(NUMBER_2))  &kp LG(LA(NUMBER_3))  &trans
-&l_mt LEFT_SHIFT LA(LG(X))  &l_mt LEFT_ALT LC(LG(NUMBER_4))  &l_mt LCTRL LC(LG(N5))  &l_mt LEFT_GUI LC(LG(N6))  &kp LG(LC(G))   &kp LG(LEFT_BRACKET)       &trans  &trans                &kp RA(RG(LEFT_ARROW))  &trans                &trans                &kp RA(RG(RIGHT))
-&trans                      &kp LC(LG(NUMBER_1))             &kp LC(LG(NUMBER_2))    &kp LC(LG(NUMBER_3))       &trans          &kp LG(RIGHT_BRACKET)      &trans  &trans                &kp RC(LEFT_ARROW)      &kp RC(DOWN_ARROW)    &kp RC(UP_ARROW)      &kp RC(RIGHT)
-&trans                      &trans                           &trans                  &trans                     &trans          &trans                     &trans  &trans                                                                                    &trans
+&kp LS(LC(TAB))           &kp LC(LG(N7))                   &kp LC(LG(N8))          &kp LC(LG(N9))             &trans                                            &kp LG(LA(NUMBER_6))  &kp LG(LA(NUMBER_1))    &kp LG(LA(NUMBER_2))  &kp LG(LA(NUMBER_3))  &trans
+&l_mt LEFT_SHIFT LC(TAB)  &l_mt LEFT_ALT LC(LG(NUMBER_4))  &l_mt LCTRL LC(LG(N5))  &l_mt LEFT_GUI LC(LG(N6))  &kp LG(LC(G))  &kp LG(LEFT_BRACKET)       &trans  &trans                &kp RA(RG(LEFT_ARROW))  &trans                &trans                &kp RA(RG(RIGHT))
+&kp LG(LA(X))             &kp LC(LG(NUMBER_1))             &kp LC(LG(NUMBER_2))    &kp LC(LG(NUMBER_3))       &trans         &kp LG(RIGHT_BRACKET)      &trans  &trans                &kp RC(LEFT_ARROW)      &kp RC(DOWN_ARROW)    &kp RC(UP_ARROW)      &kp RC(RIGHT)
+&kp LC(LG(Z))             &trans                           &kp LC(LG(N0))          &trans                     &trans         &trans                     &trans  &trans                                                                                    &trans
             >;
         };
 
         EMACS_NAV {
             bindings = <
-&kp LC(LS(TAB))           &trans         &trans         &trans        &trans                                                            &kp LA(SEMICOLON)  &kp LC(A)            &kp LG(B)            &kp LG(F)            &kp LC(E)
-&l_mt LEFT_SHIFT LC(TAB)  &kp LEFT_ALT   &kp LCTRL      &kp LEFT_GUI  &kp ESCAPE  &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &kp LA(MINUS)      &mods_b_from_ctrl_b  &mods_n_from_ctrl_n  &mods_p_from_ctrl_p  &mods_f_from_ctrl_f
-&kp LA(LG(Z))             &kp LA(LG(X))  &kp LA(GRAVE)  &kp LC(V)     &kp LG(V)   &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &kp LA(SQT)        &kp LC(U)            &kp LS(LG(COMMA))    &kp LS(LG(PERIOD))   &trans
-&trans                    &trans         &trans         &trans        &trans      &trans                     &kp LC(SPACE)              &kp LG(SPACE)                                                                     &trans
+&kp LC(LS(TAB))           &trans              &trans                     &trans                    &trans                                                            &kp LG(V)      &kp LC(A)            &kp LG(B)            &kp LG(F)            &kp LC(E)
+&l_mt LEFT_SHIFT LC(TAB)  &l_mt LEFT_ALT SQT  &l_mt LCTRL LA(SEMICOLON)  &l_mt LEFT_GUI LA(MINUS)  &kp ESCAPE  &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &kp LC(V)      &mods_b_from_ctrl_b  &mods_n_from_ctrl_n  &mods_p_from_ctrl_p  &mods_f_from_ctrl_f
+&trans                    &trans              &trans                     &kp LC(V)                 &kp LG(V)   &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &trans         &kp LC(U)            &kp LS(LG(COMMA))    &kp LS(LG(PERIOD))   &trans
+&trans                    &trans              &trans                     &trans                    &trans      &trans                     &kp LC(SPACE)              &kp LG(SPACE)                                                                 &trans
             >;
         };
 
