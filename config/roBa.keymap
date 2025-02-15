@@ -270,6 +270,46 @@
 
             tapping-term-ms = <280>;
         };
+
+        mods_b_from_ctrl_b: mods_b_from_ctrl_b {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MODS_B_FROM_CTRL_B";
+            bindings = <&kp LC(B)>, <&kp B>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)>;
+            keep-mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)>;
+        };
+
+        mods_n_from_ctrl_n: mods_n_from_ctrl_n {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MODS_N_FROM_CTRL_N";
+            bindings = <&kp LC(N)>, <&kp N>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)>;
+            keep-mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)>;
+        };
+
+        mods_p_from_ctrl_p: mods_p_from_ctrl_p {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MODS_P_FROM_CTRL_P";
+            bindings = <&kp LC(P)>, <&kp P>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)>;
+            keep-mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)>;
+        };
+
+        mods_f_from_ctrl_f: mods_f_from_ctrl_f {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MODS_F_FROM_CTRL_F";
+            bindings = <&kp LC(F)>, <&kp F>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)>;
+            keep-mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)>;
+        };
     };
 
     keymap {
@@ -342,10 +382,10 @@
 
         EMACS_NAV {
             bindings = <
-&kp LC(LS(TAB))  &trans         &kp LG(P)      &trans     &trans                                                           &kp LC(U)      &trans     &kp LC(P)          &kp LA(SQT)         &kp LA(MINUS)
-&kp LC(TAB)      &kp LG(B)      &kp LG(N)      &kp LG(F)  &trans     &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &trans         &kp LC(B)  &kp LC(N)          &kp LC(F)           &kp LA(SEMICOLON)
-&kp LA(LG(Z))    &kp LA(LG(X))  &kp LA(GRAVE)  &kp LC(V)  &kp LG(V)  &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &trans         &trans     &kp LS(LG(COMMA))  &kp LS(LG(PERIOD))  &trans
-&trans           &trans         &trans         &trans     &trans     &trans                     &kp LC(SPACE)              &kp LG(SPACE)                                                    &trans
+&kp LC(LS(TAB))  &trans         &kp LG(P)      &trans     &trans                                                           &kp LC(U)      &trans               &mods_p_from_ctrl_p  &kp LA(SQT)          &kp LA(MINUS)
+&kp LC(TAB)      &kp LG(B)      &kp LG(N)      &kp LG(F)  &trans     &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &trans         &mods_b_from_ctrl_b  &mods_n_from_ctrl_n  &mods_f_from_ctrl_f  &kp LA(SEMICOLON)
+&kp LA(LG(Z))    &kp LA(LG(X))  &kp LA(GRAVE)  &kp LC(V)  &kp LG(V)  &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &trans         &trans               &kp LS(LG(COMMA))    &kp LS(LG(PERIOD))   &trans
+&trans           &trans         &trans         &trans     &trans     &trans                     &kp LC(SPACE)              &kp LG(SPACE)                                                                 &trans
             >;
         };
 
