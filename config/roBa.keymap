@@ -97,6 +97,16 @@
             bindings = <&kp BACKSLASH>;
             key-positions = <32 33>;
         };
+
+        l_caps_word {
+            bindings = <&caps_word>;
+            key-positions = <10 11>;
+        };
+
+        r_caps_word {
+            bindings = <&caps_word>;
+            key-positions = <20 21>;
+        };
     };
 
     macros {
@@ -242,6 +252,24 @@
             flavor = "balanced";
             hold-trigger-on-release;
         };
+
+        to_num: to_num {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TO_NUM_LAYER";
+            #binding-cells = <0>;
+            bindings = <&trans>, <&to 1>;
+
+            tapping-term-ms = <280>;
+        };
+
+        to_sym: to_sym {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TO_SYM_LAYER";
+            #binding-cells = <0>;
+            bindings = <&trans>, <&to 8>;
+
+            tapping-term-ms = <280>;
+        };
     };
 
     keymap {
@@ -249,10 +277,10 @@
 
         default_layer {
             bindings = <
-&kp Q               &kp W             &kp E          &kp R             &kp T                                                     &kp Y            &kp U              &kp I          &kp O              &kp P
-&l_mt LEFT_SHIFT A  &l_mt LEFT_ALT S  &l_mt LCTRL D  &l_mt LEFT_GUI F  &kp G            &kp LEFT_BRACKET       &kp SINGLE_QUOTE  &kp H            &r_mt RIGHT_GUI J  &r_mt RCTRL K  &r_mt RIGHT_ALT L  &r_mt RIGHT_SHIFT SEMI
-&kp Z               &kp X             &kp C          &kp V             &kp B            &kp RIGHT_BRACKET      &kp EQUAL         &kp N            &kp M              &kp COMMA      &kp DOT            &scrl_mo 4 SLASH
-&kp TAB             &kp GRAVE         &kp MINUS      &thm_mo 6 ESCAPE  &thm_mo 2 SPACE  &thm_mo 7 ENTER        &thm_mo 8 ENTER   &thm_mo 1 SPACE                                                       &scrl_mo 4 BACKSLASH
+&kp Q               &kp W             &kp E             &kp R             &kp T                                                    &kp Y            &kp U              &kp I          &kp O              &kp P
+&l_mt LEFT_SHIFT A  &l_mt LEFT_ALT S  &l_mt LCTRL D     &l_mt LEFT_GUI F  &kp G            &kp LEFT_BRACKET       &kp MINUS        &kp H            &r_mt RIGHT_GUI J  &r_mt RCTRL K  &r_mt RIGHT_ALT L  &r_mt RIGHT_SHIFT SEMI
+&kp Z               &kp X             &kp C             &kp V             &kp B            &kp RIGHT_BRACKET      &kp EQUAL        &kp N            &kp M              &kp COMMA      &kp DOT            &scrl_mo 4 SLASH
+&kp TAB             &kp GRAVE         &kp SINGLE_QUOTE  &thm_mo 6 ESCAPE  &thm_mo 2 SPACE  &thm_mo 7 ENTER        &thm_mo 8 ENTER  &thm_mo 1 SPACE                                                       &scrl_mo 4 BACKSLASH
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
@@ -260,19 +288,19 @@
 
         NUM_ARROW {
             bindings = <
-&kp LEFT_BRACKET  &kp N7        &kp N8        &kp N9        &kp RIGHT_BRACKET                                &trans  &trans          &trans            &trans        &trans
-&kp SEMICOLON     &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp EQUAL          &trans                &trans  &trans  &kp LEFT_GUI    &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_SHIFT
-&kp GRAVE         &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp BACKSLASH      &trans                &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW    &kp UP_ARROW  &kp RIGHT
-&trans            &trans        &trans        &kp DOT       &kp N0             &kp SINGLE_QUOTE      &trans  &trans                                                  &trans
+&kp ASTERISK   &kp N7        &kp N8            &kp N9        &kp PLUS                                  &to 0   &to_num         &to_sym           &trans        &trans
+&kp SLASH      &kp NUMBER_4  &kp N5            &kp NUMBER_6  &kp MINUS  &kp LEFT_BRACKET       &trans  &trans  &kp LEFT_GUI    &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_SHIFT
+&kp BACKSLASH  &kp NUMBER_1  &kp NUMBER_2      &kp NUMBER_3  &kp EQUAL  &kp RIGHT_BRACKET      &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW    &kp UP_ARROW  &kp RIGHT
+&trans         &kp GRAVE     &kp SINGLE_QUOTE  &kp DOT       &kp N0     &kp COMMA              &trans  &trans                                                  &trans
             >;
         };
 
         MEDIA {
             bindings = <
-&kp C_VOLUME_DOWN          &kp C_VOLUME_UP  &kp C_PLAY_PAUSE  &kp C_PREVIOUS   &kp C_NEXT                       &kp LEFT_BRACE  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4
-&kp K_MUTE                 &kp F7           &kp F6            &kp F8           &trans      &kp F15      &trans  &kp COLON       &kp N5        &kp NUMBER_6  &kp N7        &kp N8
-&mt LEFT_SHIFT LEFT_ARROW  &kp DOWN_ARROW   &kp UP_ARROW      &kp RIGHT_ARROW  &trans      &kp F14      &trans  &kp KP_EQUAL    &kp N9        &kp COMMA     &kp DOT       &mt RIGHT_SHIFT N0
-&trans                     &trans           &trans            &trans           &trans      &trans       &trans  &trans                                                    &kp KP_EQUAL
+&kp C_VOLUME_DOWN          &kp C_VOLUME_UP  &kp C_PLAY_PAUSE  &kp C_PREVIOUS   &kp C_NEXT                       &to 0   &to_num       &to_sym    &trans        &trans
+&kp K_MUTE                 &kp F7           &kp F6            &kp F8           &trans      &kp F15      &trans  &trans  &kp LEFT_GUI  &kp RCTRL  &kp LEFT_ALT  &kp LEFT_SHIFT
+&mt LEFT_SHIFT LEFT_ARROW  &kp DOWN_ARROW   &kp UP_ARROW      &kp RIGHT_ARROW  &trans      &kp F14      &trans  &trans  &trans        &trans     &trans        &trans
+&trans                     &trans           &trans            &trans           &trans      &trans       &trans  &trans                                         &trans
             >;
         };
 
@@ -297,7 +325,7 @@
         SYS {
             bindings = <
 &trans  &trans        &trans        &trans        &trans                                &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&trans  &trans        &trans        &trans        &trans  &trans           &trans       &trans        &trans        &trans        &trans        &bt BT_CLR
+&trans  &trans        &trans        &trans        &trans  &trans           &sys_reset   &trans        &trans        &trans        &trans        &bt BT_CLR
 &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &bootloader      &bootloader  &trans        &trans        &trans        &trans        &bt BT_CLR_ALL
 &trans  &trans        &trans        &trans        &trans  &trans           &trans       &trans                                                  &trans
             >;
