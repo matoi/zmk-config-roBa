@@ -291,7 +291,7 @@
 &kp ASTERISK   &kp N7        &kp N8            &kp N9        &kp PLUS                                  &to 0   &to_num         &to_sym           &trans        &trans
 &kp SLASH      &kp NUMBER_4  &kp N5            &kp NUMBER_6  &kp MINUS  &kp LEFT_BRACKET       &trans  &trans  &kp LEFT_GUI    &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_SHIFT
 &kp BACKSLASH  &kp NUMBER_1  &kp NUMBER_2      &kp NUMBER_3  &kp EQUAL  &kp RIGHT_BRACKET      &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW    &kp UP_ARROW  &kp RIGHT
-&trans         &kp GRAVE     &kp SINGLE_QUOTE  &kp DOT       &kp N0     &kp COMMA              &trans  &trans                                                  &trans
+&trans         &kp GRAVE     &kp SINGLE_QUOTE  &kp COMMA     &kp N0     &kp DOT                &trans  &trans                                                  &trans
             >;
         };
 
@@ -351,10 +351,10 @@
 
         SYM {
             bindings = <
-&kp LEFT_BRACE  &kp AMPS         &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_BRACE                                    &trans  &trans        &trans     &trans        &trans
-&kp COLON       &kp DOLLAR       &kp PERCENT   &kp CARET             &kp PLUS               &trans              &trans  &trans  &kp LEFT_GUI  &kp RCTRL  &kp LEFT_ALT  &kp LEFT_SHIFT
-&kp TILDE       &kp EXCLAMATION  &kp AT        &kp HASH              &kp PIPE               &trans              &trans  &trans  &trans        &trans     &trans        &trans
-&trans          &trans           &trans        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp UNDERSCORE      &trans  &trans                                         &trans
+&kp ASTERISK  &kp AMPS         &kp ASTERISK       &kp LEFT_PARENTHESIS  &kp PLUS                                             &to 0   &to_num       &to_sym    &trans        &trans
+&kp QUESTION  &kp DOLLAR       &kp PERCENT        &kp CARET             &kp UNDERSCORE         &kp LEFT_BRACE        &trans  &trans  &kp LEFT_GUI  &kp RCTRL  &kp LEFT_ALT  &kp LEFT_SHIFT
+&kp PIPE      &kp EXCLAMATION  &kp AT             &kp HASH              &kp PLUS               &kp RIGHT_BRACE       &trans  &trans  &trans        &trans     &trans        &trans
+&trans        &kp TILDE        &kp DOUBLE_QUOTES  &kp LESS_THAN         &kp RIGHT_PARENTHESIS  &kp GREATER_THAN      &trans  &trans                                         &trans
             >;
         };
     };
