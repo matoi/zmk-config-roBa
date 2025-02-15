@@ -382,10 +382,10 @@
 
         EMACS_NAV {
             bindings = <
-&kp LC(LS(TAB))  &trans         &kp LG(P)      &trans     &trans                                                           &kp LC(U)      &trans               &mods_p_from_ctrl_p  &kp LA(SQT)          &kp LA(MINUS)
-&kp LC(TAB)      &kp LG(B)      &kp LG(N)      &kp LG(F)  &trans     &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &trans         &mods_b_from_ctrl_b  &mods_n_from_ctrl_n  &mods_f_from_ctrl_f  &kp LA(SEMICOLON)
-&kp LA(LG(Z))    &kp LA(LG(X))  &kp LA(GRAVE)  &kp LC(V)  &kp LG(V)  &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &trans         &trans               &kp LS(LG(COMMA))    &kp LS(LG(PERIOD))   &trans
-&trans           &trans         &trans         &trans     &trans     &trans                     &kp LC(SPACE)              &kp LG(SPACE)                                                                 &trans
+&kp LC(LS(TAB))  &trans         &kp LG(P)      &trans        &trans                                                           &kp LC(U)      &trans               &mods_p_from_ctrl_p  &kp LA(SQT)          &kp LA(MINUS)
+&kp LEFT_SHIFT   &kp LEFT_ALT   &kp LCTRL      &kp LEFT_GUI  &trans     &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &trans         &mods_b_from_ctrl_b  &mods_n_from_ctrl_n  &mods_f_from_ctrl_f  &kp LA(SEMICOLON)
+&kp LA(LG(Z))    &kp LA(LG(X))  &kp LA(GRAVE)  &kp LC(V)     &kp LG(V)  &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &trans         &trans               &kp LS(LG(COMMA))    &kp LS(LG(PERIOD))   &trans
+&trans           &trans         &trans         &trans        &trans     &trans                     &kp LC(SPACE)              &kp LG(SPACE)                                                                 &trans
             >;
         };
 
