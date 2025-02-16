@@ -325,14 +325,24 @@
             compatible = "zmk,behavior-tap-dance";
             label = "MO8_SHIFT";
             #binding-cells = <0>;
-            bindings = <&mo 8>, <&kp LEFT_SHIFT>;
+            bindings = <&thm_mo_sk 8 LEFT_SHIFT>, <&kp LEFT_SHIFT>;
         };
 
         mo7_shift: mo7_shift {
             compatible = "zmk,behavior-tap-dance";
             label = "MO7_SHIFT";
             #binding-cells = <0>;
-            bindings = <&mo 7>, <&kp LEFT_SHIFT>;
+            bindings = <&thm_mo_sk 7 LEFT_SHIFT>, <&kp LEFT_SHIFT>;
+        };
+
+        thm_mo_sk: thm_mo_sk {
+            compatible = "zmk,behavior-hold-tap";
+            label = "THM_MO_SK";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "balanced";
+            quick-tap-ms = <150>;
+            bindings = <&mo>, <&sk>;
         };
     };
 
