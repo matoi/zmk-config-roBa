@@ -188,9 +188,9 @@
             compatible = "zmk,behavior-hold-tap";
             label = "THUMB_MOMENTARY_LAYER";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <280>;
             flavor = "hold-preferred";
-            quick-tap-ms = <150>;
+            quick-tap-ms = <200>;
             bindings = <&mo>, <&kp>;
         };
 
@@ -324,7 +324,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "hold-preferred";
-            quick-tap-ms = <150>;
+            quick-tap-ms = <(-1)>;
             bindings = <&mo>, <&sl>;
         };
 
@@ -333,6 +333,8 @@
             label = "MO8SK_SHIFT";
             #binding-cells = <0>;
             bindings = <&thm_mo_sk 8 LEFT_SHIFT>, <&kp LEFT_SHIFT>;
+
+            tapping-term-ms = <280>;
         };
 
         mo7sk_shift: mo7sk_shift {
@@ -340,6 +342,8 @@
             label = "MO7SK_SHIFT";
             #binding-cells = <0>;
             bindings = <&thm_mo_sk 7 LEFT_SHIFT>, <&kp LEFT_SHIFT>;
+
+            tapping-term-ms = <280>;
         };
 
         thm_mo_sk: thm_mo_sk {
@@ -350,8 +354,6 @@
             flavor = "balanced";
             quick-tap-ms = <(-1)>;
             bindings = <&mo>, <&macro_sk>;
-
-            hold-trigger-on-release;
         };
     };
 
