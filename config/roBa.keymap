@@ -355,6 +355,16 @@
             quick-tap-ms = <(-1)>;
             bindings = <&mo>, <&macro_sk>;
         };
+
+        mods_d_from_ctrl_d: mods_d_from_ctrl_d {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MODS_D_FROM_CTRL_D";
+            bindings = <&kp LC(D)>, <&kp D>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)>;
+            keep-mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)>;
+        };
     };
 
     keymap {
@@ -430,7 +440,7 @@
 &kp LC(LS(TAB))           &trans              &trans                     &trans                    &trans                                                            &kp LG(V)      &kp LC(A)            &kp LG(B)            &kp LG(F)            &kp LC(E)
 &l_mt LEFT_SHIFT LC(TAB)  &l_mt LEFT_ALT SQT  &l_mt LCTRL LA(SEMICOLON)  &l_mt LEFT_GUI LA(MINUS)  &kp ESCAPE  &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &kp LC(V)      &mods_b_from_ctrl_b  &mods_n_from_ctrl_n  &mods_p_from_ctrl_p  &mods_f_from_ctrl_f
 &trans                    &trans              &trans                     &trans                    &trans      &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &trans         &kp LC(U)            &kp LS(LG(COMMA))    &kp LS(LG(PERIOD))   &trans
-&trans                    &trans              &trans                     &trans                    &trans      &trans                     &kp LC(SPACE)              &kp LG(SPACE)                                                                 &trans
+&trans                    &trans              &trans                     &trans                    &trans      &trans                     &kp LC(SPACE)              &kp LG(SPACE)                                                                 &mods_d_from_ctrl_d
             >;
         };
 
