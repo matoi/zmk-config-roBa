@@ -117,11 +117,11 @@
             label = "TO_LAYER_0";
         };
 
-        tp_sk: new_macro {
+        macro_sk: new_macro {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             bindings = <&sk LEFT_SHIFT &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-            label = "NEW_MACRO";
+            label = "Macro sk";
         };
     };
 
@@ -328,16 +328,16 @@
             bindings = <&mo>, <&sl>;
         };
 
-        mo8_shift: mo8_shift {
+        mo8sk_shift: mo8sk_shift {
             compatible = "zmk,behavior-tap-dance";
-            label = "MO8_SHIFT";
+            label = "MO8SK_SHIFT";
             #binding-cells = <0>;
             bindings = <&thm_mo_sk 8 LEFT_SHIFT>, <&kp LEFT_SHIFT>;
         };
 
-        mo7_shift: mo7_shift {
+        mo7sk_shift: mo7sk_shift {
             compatible = "zmk,behavior-tap-dance";
-            label = "MO7_SHIFT";
+            label = "MO7SK_SHIFT";
             #binding-cells = <0>;
             bindings = <&thm_mo_sk 7 LEFT_SHIFT>, <&kp LEFT_SHIFT>;
         };
@@ -349,7 +349,7 @@
             tapping-term-ms = <200>;
             flavor = "balanced";
             quick-tap-ms = <(-1)>;
-            bindings = <&mo>, <&tp_sk>;
+            bindings = <&mo>, <&macro_sk>;
 
             hold-trigger-on-release;
         };
@@ -360,10 +360,10 @@
 
         default_layer {
             bindings = <
-&kp Q               &kp W             &kp E             &kp R             &kp T                                               &kp Y            &kp U              &kp I          &kp O              &kp P
-&l_mt LEFT_SHIFT A  &l_mt LEFT_ALT S  &l_mt LCTRL D     &l_mt LEFT_GUI F  &kp G            &kp LEFT_BRACKET       &kp MINUS   &kp H            &r_mt RIGHT_GUI J  &r_mt RCTRL K  &r_mt RIGHT_ALT L  &r_mt RIGHT_SHIFT SEMI
-&kp Z               &kp X             &kp C             &kp V             &kp B            &kp RIGHT_BRACKET      &kp EQUAL   &kp N            &kp M              &kp COMMA      &kp DOT            &scrl_mo 4 SLASH
-&kp TAB             &kp GRAVE         &kp SINGLE_QUOTE  &thm_mo_sl 6 6    &thm_mo 2 SPACE  &mo7_shift             &mo8_shift  &thm_mo 1 SPACE                                                       &scrl_mo 4 BACKSLASH
+&kp Q               &kp W             &kp E             &kp R             &kp T                                                 &kp Y            &kp U              &kp I          &kp O              &kp P
+&l_mt LEFT_SHIFT A  &l_mt LEFT_ALT S  &l_mt LCTRL D     &l_mt LEFT_GUI F  &kp G            &kp LEFT_BRACKET       &kp MINUS     &kp H            &r_mt RIGHT_GUI J  &r_mt RCTRL K  &r_mt RIGHT_ALT L  &r_mt RIGHT_SHIFT SEMI
+&kp Z               &kp X             &kp C             &kp V             &kp B            &kp RIGHT_BRACKET      &kp EQUAL     &kp N            &kp M              &kp COMMA      &kp DOT            &scrl_mo 4 SLASH
+&kp TAB             &kp GRAVE         &kp SINGLE_QUOTE  &thm_mo_sl 6 6    &thm_mo 2 SPACE  &mo7sk_shift           &mo8sk_shift  &thm_mo 1 SPACE                                                       &scrl_mo 4 BACKSLASH
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
