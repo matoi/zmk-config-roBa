@@ -332,7 +332,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "MO8SK_SHIFT";
             #binding-cells = <0>;
-            bindings = <&thm_mo_sk 8 LEFT_SHIFT>, <&caps_word>;
+            bindings = <&thm_mo_sk 8 LEFT_SHIFT>, <&kp_capswrd LEFT_SHIFT 0>;
 
             tapping-term-ms = <280>;
         };
@@ -341,7 +341,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "MO7SK_SHIFT";
             #binding-cells = <0>;
-            bindings = <&thm_mo_sk 7 LEFT_SHIFT>, <&caps_word>;
+            bindings = <&thm_mo_sk 7 LEFT_SHIFT>, <&kp_capswrd LEFT_SHIFT 0>;
 
             tapping-term-ms = <280>;
         };
@@ -364,6 +364,17 @@
             #binding-cells = <0>;
             mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)>;
             keep-mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)>;
+        };
+
+        kp_capswrd: kp_capswrd {
+            compatible = "zmk,behavior-hold-tap";
+            label = "KP_CAPSWRD";
+            bindings = <&kp>, <&caps_word>;
+
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <150>;
         };
     };
 
