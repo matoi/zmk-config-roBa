@@ -339,7 +339,7 @@
             #binding-cells = <0>;
             bindings = <&thm_mo_sk 8 LEFT_SHIFT>, <&kp_capswrd LEFT_SHIFT 0>;
 
-            tapping-term-ms = <280>;
+            tapping-term-ms = <180>;
         };
 
         mo7sk_shift: mo7sk_shift {
@@ -348,7 +348,7 @@
             #binding-cells = <0>;
             bindings = <&thm_mo_sk 7 LEFT_SHIFT>, <&kp_capswrd LEFT_SHIFT 0>;
 
-            tapping-term-ms = <280>;
+            tapping-term-ms = <180>;
         };
 
         thm_mo_sk: thm_mo_sk {
@@ -378,7 +378,7 @@
 
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <280>;
+            tapping-term-ms = <200>;
             quick-tap-ms = <150>;
         };
     };
