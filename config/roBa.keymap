@@ -128,6 +128,19 @@
             bindings = <&sk LEFT_SHIFT &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "Macro sk";
         };
+
+        C_x_5_0: C_x_5_0 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LC(X)>,
+                <&macro_wait_time 20>,
+                <&kp N5>,
+                <&macro_wait_time 20>,
+                <&kp N0>;
+
+            label = "C_X_5_0";
+        };
     };
 
     behaviors {
@@ -381,6 +394,15 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
         };
+
+        close_or_tap: close_or_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "CLOSE_OR_TAP";
+            bindings = <&kp>, <&C_x_5_0>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+        };
     };
 
     keymap {
@@ -453,10 +475,10 @@
 
         EMACS_NAV {
             bindings = <
-&kp LC(LS(TAB))              &kp LA(LG(NUMBER_1))  &kp LA(LG(NUMBER_2))  &kp LA(LG(NUMBER_3))  &kp LA(LG(NUMBER_6))                                                        &kp LC(U)      &kp LC(A)            &kp LG(B)            &kp LG(F)            &kp LC(E)
-&l_mt RIGHT_CONTROL LC(TAB)  &kp LEFT_SHIFT        &l_mt LEFT_ALT LC(D)  &kp LEFT_GUI          &kp ESCAPE            &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &kp LC(H)      &mods_b_from_ctrl_b  &mods_n_from_ctrl_n  &mods_p_from_ctrl_p  &mods_f_from_ctrl_f
-&trans                       &kp LA(SQT)           &kp LA(SEMICOLON)     &kp LA(MINUS)         &kp LC(Q)             &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &trans         &kp LC(V)            &kp LS(LG(COMMA))    &kp LS(LG(PERIOD))   &kp LA(V)
-&trans                       &trans                &trans                &trans                &trans                &trans                     &kp LG(SPACE)              &kp LC(SPACE)                                                                 &mods_d_from_ctrl_d
+&kp LC(LS(TAB))              &kp LA(LG(NUMBER_1))        &kp LA(LG(NUMBER_2))  &kp LA(LG(NUMBER_3))  &kp LA(LG(NUMBER_6))                                                        &kp LC(U)      &kp LC(A)            &kp LG(B)            &kp LG(F)            &kp LC(E)
+&l_mt RIGHT_CONTROL LC(TAB)  &close_or_tap LEFT_SHIFT 0  &l_mt LEFT_ALT LC(D)  &kp LEFT_GUI          &kp ESCAPE            &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &kp LC(H)      &mods_b_from_ctrl_b  &mods_n_from_ctrl_n  &mods_p_from_ctrl_p  &mods_f_from_ctrl_f
+&trans                       &kp LA(SQT)                 &kp LA(SEMICOLON)     &kp LA(MINUS)         &kp LC(Q)             &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &trans         &kp LC(V)            &kp LS(LG(COMMA))    &kp LS(LG(PERIOD))   &kp LA(V)
+&trans                       &trans                      &trans                &trans                &trans                &trans                     &kp LG(SPACE)              &kp LC(SPACE)                                                                 &mods_d_from_ctrl_d
             >;
         };
 
