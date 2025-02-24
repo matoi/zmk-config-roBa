@@ -453,10 +453,10 @@
 
         EMACS_NAV {
             bindings = <
-&kp LC(LS(TAB))              &trans                    &trans                        &trans                    &trans                                                            &kp LG(U)      &kp LC(A)            &kp LG(B)            &kp LG(F)            &kp LC(E)
-&l_mt RIGHT_CONTROL LC(TAB)  &l_mt LEFT_SHIFT LA(SQT)  &l_mt LEFT_ALT LA(SEMICOLON)  &l_mt LEFT_GUI LA(MINUS)  &kp ESCAPE  &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &kp LG(V)      &mods_b_from_ctrl_b  &mods_n_from_ctrl_n  &mods_p_from_ctrl_p  &mods_f_from_ctrl_f
-&trans                       &trans                    &trans                        &trans                    &trans      &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &kp LC(V)      &trans               &kp LS(LG(COMMA))    &kp LS(LG(PERIOD))   &trans
-&trans                       &trans                    &trans                        &trans                    &trans      &trans                     &kp LC(SPACE)              &kp LG(SPACE)                                                                 &mods_d_from_ctrl_d
+&kp LC(LS(TAB))              &kp LA(APOSTROPHE)  &kp LA(SEMICOLON)     &kp LA(MINUS)  &kp LC(Q)                                                         &kp LG(U)      &kp LC(A)            &kp LG(B)            &kp LG(F)            &kp LC(E)
+&l_mt RIGHT_CONTROL LC(TAB)  &kp LEFT_SHIFT      &l_mt LEFT_ALT LC(D)  &kp LEFT_GUI   &kp ESCAPE  &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &kp LC(H)      &mods_b_from_ctrl_b  &mods_n_from_ctrl_n  &mods_p_from_ctrl_p  &mods_f_from_ctrl_f
+&trans                       &trans              &trans                &trans         &trans      &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &trans         &kp LC(V)            &kp LS(LG(COMMA))    &kp LS(LG(PERIOD))   &kp LA(V)
+&trans                       &trans              &trans                &trans         &trans      &trans                     &kp LC(SPACE)              &kp LG(SPACE)                                                                 &mods_d_from_ctrl_d
             >;
         };
 
