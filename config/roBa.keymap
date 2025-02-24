@@ -399,10 +399,10 @@
 
         NUM {
             bindings = <
-&kp ASTERISK   &kp N7        &kp N8            &kp N9        &kp PLUS                                  &to 0                  &dt_to_num      &dt_to_sym      &trans           &trans
-&kp SLASH      &kp NUMBER_4  &kp N5            &kp NUMBER_6  &kp MINUS  &kp LEFT_BRACKET       &gresc  &kp LS(LC(J))          &kp RIGHT_GUI   &kp RIGHT_ALT   &kp RIGHT_SHIFT  &kp RIGHT_CONTROL
-&kp BACKSLASH  &kp NUMBER_1  &kp NUMBER_2      &kp NUMBER_3  &kp EQUAL  &kp RIGHT_BRACKET      &trans  &kp LS(LC(SEMICOLON))  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW     &kp RIGHT
-&trans         &kp GRAVE     &kp SINGLE_QUOTE  &kp COMMA     &kp N0     &kp DOT                &trans  &trans                                                                  &trans
+&kp ASTERISK   &kp N7        &kp N8        &kp N9        &kp PLUS                                  &to 0                  &dt_to_num      &dt_to_sym      &trans           &trans
+&kp SLASH      &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp MINUS  &kp LEFT_BRACKET       &gresc  &kp LS(LC(J))          &kp RIGHT_GUI   &kp RIGHT_ALT   &kp RIGHT_SHIFT  &kp RIGHT_CONTROL
+&kp BACKSLASH  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL  &kp RIGHT_BRACKET      &trans  &kp LS(LC(SEMICOLON))  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW     &kp RIGHT
+&trans         &kp PERIOD    &kp NUMBER_0  &kp GRAVE     &kp COMMA  &kp SQT                &trans  &trans                                                                  &trans
             >;
         };
 
@@ -453,10 +453,10 @@
 
         EMACS_NAV {
             bindings = <
-&kp LC(LS(TAB))              &kp LA(APOSTROPHE)  &kp LA(SEMICOLON)     &kp LA(MINUS)  &kp LC(Q)                                                         &kp LG(U)      &kp LC(A)            &kp LG(B)            &kp LG(F)            &kp LC(E)
-&l_mt RIGHT_CONTROL LC(TAB)  &kp LEFT_SHIFT      &l_mt LEFT_ALT LC(D)  &kp LEFT_GUI   &kp ESCAPE  &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &kp LC(H)      &mods_b_from_ctrl_b  &mods_n_from_ctrl_n  &mods_p_from_ctrl_p  &mods_f_from_ctrl_f
-&trans                       &trans              &trans                &trans         &trans      &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &trans         &kp LC(V)            &kp LS(LG(COMMA))    &kp LS(LG(PERIOD))   &kp LA(V)
-&trans                       &trans              &trans                &trans         &trans      &trans                     &kp LC(SPACE)              &kp LG(SPACE)                                                                 &mods_d_from_ctrl_d
+&kp LC(LS(TAB))              &kp LA(LG(NUMBER_1))  &kp LA(LG(NUMBER_2))  &kp LA(LG(NUMBER_3))  &kp LA(LG(NUMBER_6))                                                        &kp LC(U)      &kp LC(A)            &kp LG(B)            &kp LG(F)            &kp LC(E)
+&l_mt RIGHT_CONTROL LC(TAB)  &kp LEFT_SHIFT        &l_mt LEFT_ALT LC(D)  &kp LEFT_GUI          &kp ESCAPE            &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &kp LC(H)      &mods_b_from_ctrl_b  &mods_n_from_ctrl_n  &mods_p_from_ctrl_p  &mods_f_from_ctrl_f
+&trans                       &kp LA(SQT)           &kp LA(SEMICOLON)     &kp LA(MINUS)         &kp LC(Q)             &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &trans         &kp LC(V)            &kp LS(LG(COMMA))    &kp LS(LG(PERIOD))   &kp LA(V)
+&trans                       &trans                &trans                &trans                &trans                &trans                     &kp LG(SPACE)              &kp LC(SPACE)                                                                 &mods_d_from_ctrl_d
             >;
         };
 
