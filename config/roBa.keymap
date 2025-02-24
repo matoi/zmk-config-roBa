@@ -490,7 +490,7 @@
             bindings = <
 &kp LC(LS(TAB))              &kp LA(LG(NUMBER_1))        &kp LA(LG(NUMBER_2))  &kp LA(LG(NUMBER_3))  &kp LA(LG(NUMBER_6))                                                        &kp LC(U)      &kp LC(A)            &kp LG(B)            &kp LG(F)            &kp LC(E)
 &l_mt RIGHT_CONTROL LC(TAB)  &close_or_tap LEFT_SHIFT 0  &l_mt LEFT_ALT LC(D)  &kp LEFT_GUI          &kp ESCAPE            &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &kp LC(H)      &mods_b_from_ctrl_b  &mods_n_from_ctrl_n  &mods_p_from_ctrl_p  &mods_f_from_ctrl_f
-&trans                       &kp LA(SQT)                 &kp LA(SEMICOLON)     &kp LA(MINUS)         &kp LC(Q)             &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &C_x_5_2       &kp LC(V)            &kp LS(LG(COMMA))    &kp LS(LG(PERIOD))   &kp LA(V)
+&trans                       &kp LA(SQT)                 &kp LA(MINUS)         &kp LA(SEMICOLON)     &kp LC(Q)             &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &C_x_5_2       &kp LC(V)            &kp LS(LG(COMMA))    &kp LS(LG(PERIOD))   &kp LA(V)
 &trans                       &trans                      &trans                &trans                &trans                &trans                     &kp LG(SPACE)              &kp LC(SPACE)                                                                 &mods_d_from_ctrl_d
             >;
         };
