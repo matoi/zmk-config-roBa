@@ -479,10 +479,10 @@
 
         WIN_NAV {
             bindings = <
-&kp LS(LC(TAB))             &kp LC(LG(N7))                     &kp LC(LG(N8))             &kp LC(LG(N9))             &trans                                            &kp LG(LA(NUMBER_6))  &kp LG(LA(NUMBER_1))    &kp LG(LA(NUMBER_2))  &kp LG(LA(NUMBER_3))  &trans
-&l_mt LEFT_CONTROL LC(TAB)  &l_mt LEFT_SHIFT LC(LG(NUMBER_4))  &l_mt LEFT_ALT LC(LG(N5))  &l_mt LEFT_GUI LC(LG(N6))  &kp LG(LC(G))  &kp LG(LEFT_BRACKET)       &trans  &trans                &kp RA(RG(LEFT_ARROW))  &trans                &trans                &kp RA(RG(RIGHT))
-&kp LG(LA(X))               &kp LC(LG(NUMBER_1))               &kp LC(LG(NUMBER_2))       &kp LC(LG(NUMBER_3))       &trans         &kp LG(RIGHT_BRACKET)      &trans  &trans                &kp RC(LEFT_ARROW)      &kp RC(DOWN_ARROW)    &kp RC(UP_ARROW)      &kp RC(RIGHT)
-&kp LC(LG(Z))               &trans                             &kp LC(LG(N0))             &trans                     &trans         &trans                     &trans  &trans                                                                                    &trans
+&kp LS(LC(TAB))             &kp LC(LG(N7))                     &kp LC(LG(N8))             &kp LC(LG(N9))             &kp LS(LA(NUMBER_4))                                     &kp LG(LA(NUMBER_6))  &kp LG(LA(NUMBER_1))    &kp LG(LA(NUMBER_2))  &kp LG(LA(NUMBER_3))  &trans
+&l_mt LEFT_CONTROL LC(TAB)  &l_mt LEFT_SHIFT LC(LG(NUMBER_4))  &l_mt LEFT_ALT LC(LG(N5))  &l_mt LEFT_GUI LC(LG(N6))  &kp LG(LC(G))         &kp LG(LEFT_BRACKET)       &trans  &trans                &kp RA(RG(LEFT_ARROW))  &trans                &trans                &kp RA(RG(RIGHT))
+&kp LG(LA(X))               &kp LC(LG(NUMBER_1))               &kp LC(LG(NUMBER_2))       &kp LC(LG(NUMBER_3))       &trans                &kp LG(RIGHT_BRACKET)      &trans  &trans                &kp RC(LEFT_ARROW)      &kp RC(DOWN_ARROW)    &kp RC(UP_ARROW)      &kp RC(RIGHT)
+&kp LC(LG(Z))               &trans                             &kp LC(LG(N0))             &trans                     &trans                &trans                     &trans  &trans                                                                                    &trans
             >;
         };
 
