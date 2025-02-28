@@ -102,16 +102,6 @@
             bindings = <&caps_word>;
             key-positions = <20 21>;
         };
-
-        c-a {
-            bindings = <&kp LC(A)>;
-            key-positions = <10 11>;
-        };
-
-        c-e {
-            bindings = <&kp LC(E)>;
-            key-positions = <10 13>;
-        };
     };
 
     macros {
