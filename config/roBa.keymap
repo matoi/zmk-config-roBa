@@ -102,6 +102,11 @@
             bindings = <&caps_word>;
             key-positions = <20 21>;
         };
+
+        layer_9 {
+            bindings = <&mo 9>;
+            key-positions = <38 41>;
+        };
     };
 
     macros {
@@ -492,6 +497,15 @@
 &kp QUESTION  &kp DOLLAR       &kp PERCENT        &kp CARET             &kp UNDERSCORE         &kp LEFT_BRACE        &trans  &kp LS(LC(J))          &kp RIGHT_GUI  &kp RIGHT_CONTROL  &kp RIGHT_SHIFT  &kp RIGHT_CONTROL
 &kp PIPE      &kp EXCLAMATION  &kp AT             &kp HASH              &kp PLUS               &kp RIGHT_BRACE       &trans  &kp LS(LC(SEMICOLON))  &none          &none              &none            &kp RIGHT_SHIFT
 &trans        &kp TILDE        &kp DOUBLE_QUOTES  &kp LESS_THAN         &kp RIGHT_PARENTHESIS  &kp GREATER_THAN      &trans  &trans                                                                    &none
+            >;
+        };
+
+        EMACS_EDIT {
+            bindings = <
+&trans  &trans  &trans     &trans  &trans                      &trans  &trans  &trans     &trans  &trans
+&trans  &trans  &kp LA(D)  &trans  &trans  &trans      &trans  &trans  &trans  &kp LA(K)  &trans  &trans
+&trans  &trans  &trans     &trans  &trans  &trans      &trans  &trans  &trans  &trans     &trans  &trans
+&trans  &trans  &trans     &trans  &trans  &trans      &trans  &trans                             &trans
             >;
         };
     };
