@@ -493,10 +493,10 @@
 
         SYMBOL {
             bindings = <
-&kp ASTERISK  &kp AMPS         &kp ASTERISK       &kp LEFT_PARENTHESIS  &kp PLUS                                             &to 0                  &dt_to_num     &dt_to_sym         &none            &none
-&kp QUESTION  &kp DOLLAR       &kp PERCENT        &kp CARET             &kp UNDERSCORE         &kp LEFT_BRACE        &trans  &kp LS(LC(J))          &kp RIGHT_GUI  &kp RIGHT_CONTROL  &kp RIGHT_SHIFT  &kp RIGHT_CONTROL
-&kp PIPE      &kp EXCLAMATION  &kp AT             &kp HASH              &kp PLUS               &kp RIGHT_BRACE       &trans  &kp LS(LC(SEMICOLON))  &none          &none              &none            &kp RIGHT_SHIFT
-&trans        &kp TILDE        &kp DOUBLE_QUOTES  &kp LESS_THAN         &kp RIGHT_PARENTHESIS  &kp GREATER_THAN      &trans  &trans                                                                    &none
+&kp ASTERISK  &kp AMPS         &kp ASTERISK           &kp LEFT_PARENTHESIS  &kp PLUS                                         &to 0                  &dt_to_num     &dt_to_sym         &none            &none
+&kp QUESTION  &kp DOLLAR       &kp PERCENT            &kp CARET             &kp UNDERSCORE     &kp LEFT_BRACE        &trans  &kp LS(LC(J))          &kp RIGHT_GUI  &kp RIGHT_CONTROL  &kp RIGHT_SHIFT  &kp RIGHT_CONTROL
+&kp PIPE      &kp EXCLAMATION  &kp AT                 &kp HASH              &kp PLUS           &kp RIGHT_BRACE       &trans  &kp LS(LC(SEMICOLON))  &none          &none              &none            &kp RIGHT_SHIFT
+&trans        &kp TILDE        &kp RIGHT_PARENTHESIS  &kp LESS_THAN         &kp DOUBLE_QUOTES  &kp GREATER_THAN      &trans  &trans                                                                    &none
             >;
         };
 
