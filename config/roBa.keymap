@@ -502,10 +502,10 @@
 
         EMACS_EDIT {
             bindings = <
-&trans  &trans  &trans     &trans  &trans                      &trans  &trans  &trans     &trans  &trans
-&trans  &trans  &kp LA(D)  &trans  &trans  &trans      &trans  &trans  &trans  &kp LA(K)  &trans  &trans
-&trans  &trans  &trans     &trans  &trans  &trans      &trans  &trans  &trans  &trans     &trans  &trans
-&trans  &trans  &trans     &trans  &trans  &trans      &trans  &trans                             &trans
+&trans  &kp LG(LA(W))  &trans         &trans  &trans                      &trans  &trans     &trans     &trans  &trans
+&trans  &trans         &trans         &trans  &trans  &trans      &trans  &trans  &trans     &kp LA(K)  &trans  &trans
+&trans  &trans         &kp LG(LA(W))  &trans  &trans  &trans      &trans  &trans  &kp LA(M)  &trans     &trans  &trans
+&trans  &trans         &trans         &trans  &trans  &trans      &trans  &trans                                &trans
             >;
         };
     };
