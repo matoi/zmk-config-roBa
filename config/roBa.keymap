@@ -484,10 +484,10 @@
 
         EMACS_NAV {
             bindings = <
-&kp LC(LS(TAB))              &kp LC(LA(W))               &trans                &trans             &trans                                                            &kp LC(U)      &kp LC(A)            &kp LG(B)            &kp LG(F)            &kp LC(E)
-&l_mt RIGHT_CONTROL LC(TAB)  &close_or_tap LEFT_SHIFT 0  &l_mt LEFT_ALT LC(D)  &kp LEFT_GUI       &kp ESCAPE  &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &kp LC(H)      &mods_b_from_ctrl_b  &mods_n_from_ctrl_n  &mods_p_from_ctrl_p  &mods_f_from_ctrl_f
-&kp LEFT_SHIFT               &kp LA(SQT)                 &kp LA(MINUS)         &kp LA(SEMICOLON)  &kp LC(Q)   &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &C_x_5_2       &kp LS(LG(COMMA))    &kp LC(V)            &kp LG(V)            &kp LG(LS(PERIOD))
-&sk LC(LEFT_GUI)             &sk LC(LEFT_ALT)            &sk LG(LEFT_ALT)      &trans             &trans      &trans                     &kp LG(SPACE)              &kp LC(SPACE)                                                                 &none
+&kp LC(LS(TAB))              &kp LC(LA(W))               &none                 &none         &none                                                             &kp LC(U)      &kp LC(A)            &kp LG(B)            &kp LG(F)            &kp LC(E)
+&l_mt RIGHT_CONTROL LC(TAB)  &close_or_tap LEFT_SHIFT 0  &l_mt LEFT_ALT LC(D)  &kp LEFT_GUI  &kp ESCAPE  &kp LG(LEFT_BRACKET)       &kp LS(LA(LEFT_BRACKET))   &kp LC(H)      &mods_b_from_ctrl_b  &mods_n_from_ctrl_n  &mods_p_from_ctrl_p  &mods_f_from_ctrl_f
+&kp LEFT_SHIFT               &none                       &none                 &none         &kp LC(Q)   &kp LG(RIGHT_BRACKET)      &kp LS(LA(RIGHT_BRACKET))  &C_x_5_2       &kp LS(LG(COMMA))    &kp LC(V)            &kp LG(V)            &kp LG(LS(PERIOD))
+&sk LC(LEFT_GUI)             &sk LC(LEFT_ALT)            &sk LG(LEFT_ALT)      &trans        &trans      &trans                     &kp LG(SPACE)              &kp LC(SPACE)                                                                 &none
             >;
         };
 
