@@ -9,7 +9,6 @@
 #define U_MOUSE_MOVE_MAX 900
 #define U_MOUSE_SCROLL_MAX 8
 
-
 &mt {
     flavor = "balanced";
     quick-tap-ms = <150>;
@@ -42,11 +41,6 @@
         bksp {
             bindings = <&kp BACKSPACE>;
             key-positions = <8 9>;
-        };
-
-        tab {
-            bindings = <&none>;
-            key-positions = <3 2>;
         };
 
         l_config {
@@ -87,26 +81,6 @@
         quote {
             bindings = <&kp SINGLE_QUOTE>;
             key-positions = <16 17>;
-        };
-
-        grave {
-            bindings = <&kp GRAVE>;
-            key-positions = <28 29>;
-        };
-
-        backslash {
-            bindings = <&kp BACKSLASH>;
-            key-positions = <32 33>;
-        };
-
-        r_caps_word {
-            bindings = <&caps_word>;
-            key-positions = <20 21>;
-        };
-
-        layer_9 {
-            bindings = <&mo 9>;
-            key-positions = <38 41>;
         };
     };
 
