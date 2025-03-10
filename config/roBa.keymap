@@ -156,7 +156,7 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
         beg_buf: beg_buf {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(COMMA) &kp K_CANCEL>;
+            bindings = <&kp LG(LS(COMMA)) &kp K_CANCEL>;
             label = "BEG_BUF";
         };
 
