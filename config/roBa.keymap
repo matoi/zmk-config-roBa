@@ -371,10 +371,10 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
 
         NUM {
             bindings = <
-&kp ASTERISK   &kp N7        &kp N8        &kp N9        &kp PLUS                                                      &C_x_5_2       &beg_buf        &kp LG(B)       &kp LG(F)        &end_buf
-&kp SLASH      &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp MINUS   &kp LEFT_BRACKET       &kp LS(LA(LEFT_BRACKET))   &kp LS(LG(V))  &sk RIGHT_GUI   &sk RIGHT_ALT   &kp RIGHT_SHIFT  &sk RIGHT_CONTROL
-&kp BACKSLASH  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL   &kp RIGHT_BRACKET      &kp LS(LA(RIGHT_BRACKET))  &kp LC(V)      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW     &kp RIGHT
-&trans         &kp GRAVE     &kp NUMBER_0  &kp COMMA     &kp PERIOD  &kp K_CANCEL           &trans                     &trans                                                          &C_x_5_0
+&kp ASTERISK       &kp N7                         &kp N8             &kp N9                   &kp PLUS                                                      &C_x_5_2       &beg_buf        &kp LG(B)       &kp LG(F)        &end_buf
+&l_mt RCTRL SLASH  &l_mt_sft LEFT_SHIFT NUMBER_4  &l_mt LEFT_ALT N5  &l_mt LEFT_GUI NUMBER_6  &kp MINUS   &kp LEFT_BRACKET       &kp LS(LA(LEFT_BRACKET))   &kp LS(LG(V))  &sk RIGHT_GUI   &sk RIGHT_ALT   &kp RIGHT_SHIFT  &sk RIGHT_CONTROL
+&kp BACKSLASH      &kp NUMBER_1                   &kp NUMBER_2       &kp NUMBER_3             &kp EQUAL   &kp RIGHT_BRACKET      &kp LS(LA(RIGHT_BRACKET))  &kp LC(V)      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW     &kp RIGHT
+&trans             &kp GRAVE                      &kp NUMBER_0       &kp COMMA                &kp PERIOD  &kp K_CANCEL           &trans                     &trans                                                          &C_x_5_0
             >;
         };
 
