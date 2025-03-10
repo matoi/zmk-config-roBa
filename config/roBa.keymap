@@ -10,6 +10,7 @@
 #define MOUSE 3
 #define SCROLL 4
 #define NUM 1
+#define SYM 8
 #define U_MOUSE_MOVE_MAX 900
 #define U_MOUSE_SCROLL_MAX 8
 #define QUICK_TAP_MS 175
@@ -36,6 +37,8 @@ ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_dance>; flavor = "balanced";
              tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
 ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
               tapping-term-ms = <200>;)
+
+&num_word { ignore-modifiers; };
 
 &mt {
     flavor = "balanced";
