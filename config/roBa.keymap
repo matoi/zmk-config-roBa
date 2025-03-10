@@ -182,30 +182,6 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
             flavor = "balanced";
         };
 
-        qt_mo: qt_mo {
-            compatible = "zmk,behavior-hold-tap";
-            label = "QUANTUM_MOMENTARY_LAYER";
-            bindings = <&mo>, <&to_layer_0>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <280>;
-            flavor = "balanced";
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <125>;
-        };
-
-        qt_mt: qt_mt {
-            compatible = "zmk,behavior-hold-tap";
-            label = "QUANTUM_MOD_TAP";
-            #binding-cells = <2>;
-            tapping-term-ms = <280>;
-            flavor = "balanced";
-            quick-tap-ms = <150>;
-            bindings = <&kp>, <&kp>;
-
-            require-prior-idle-ms = <125>;
-        };
-
         scrl_mo: scrl_mo {
             compatible = "zmk,behavior-hold-tap";
             label = "MOMENTARY_SCROLL";
@@ -219,18 +195,6 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
             hold-while-undecided;
         };
 
-        thm_mt: thm_mt {
-            compatible = "zmk,behavior-hold-tap";
-            label = "THUMB_MOD_TAP";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "balanced";
-            quick-tap-ms = <150>;
-            bindings = <&kp>, <&kp>;
-
-            hold-trigger-on-release;
-        };
-
         thm_mo: thm_mo {
             compatible = "zmk,behavior-hold-tap";
             label = "THUMB_MOMENTARY_LAYER";
@@ -239,32 +203,6 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
             flavor = "hold-preferred";
             quick-tap-ms = <200>;
             bindings = <&mo>, <&kp>;
-        };
-
-        l_mo: l_mo {
-            compatible = "zmk,behavior-hold-tap";
-            label = "L_MOMENTARY_LAYER";
-            bindings = <&mo>, <&to_layer_0>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <280>;
-            flavor = "balanced";
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <125>;
-            hold-trigger-key-positions = <28 16 17 29 5 6 18 6 7 8 18 19 20 30 31 32 9 21 33 42 39 40 22>;
-        };
-
-        r_mo: r_mo {
-            compatible = "zmk,behavior-hold-tap";
-            label = "R_MOMENTARY_LAYER";
-            bindings = <&mo>, <&to_layer_0>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <280>;
-            flavor = "balanced";
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <125>;
-            hold-trigger-key-positions = <0 1 4 10 11 12 13 14 15 22 23 24 25 26 27 2 3 22 34 35 36 39 37 38>;
         };
 
         l_mt: l_mt {
@@ -292,18 +230,6 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
 
             require-prior-idle-ms = <200>;
             hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 15 22 23 24 25 26 27 36 34 35 39 38 37>;
-            hold-trigger-on-release;
-        };
-
-        cpswrd_shft: cpswrd_shft {
-            compatible = "zmk,behavior-hold-tap";
-            label = "CAPSWORD_SHIFT";
-            bindings = <&kp>, <&caps_word>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <125>;
-            flavor = "balanced";
             hold-trigger-on-release;
         };
 
@@ -375,34 +301,6 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
             bindings = <&mo>, <&sl>;
         };
 
-        mo8sk_shift: mo8sk_shift {
-            compatible = "zmk,behavior-tap-dance";
-            label = "MO8SK_SHIFT";
-            #binding-cells = <0>;
-            bindings = <&thm_mo_sk 8 LEFT_SHIFT>, <&kp_capswrd LEFT_SHIFT 0>;
-
-            tapping-term-ms = <180>;
-        };
-
-        mo7sk_shift: mo7sk_shift {
-            compatible = "zmk,behavior-tap-dance";
-            label = "MO7SK_SHIFT";
-            #binding-cells = <0>;
-            bindings = <&thm_mo_sk 7 LEFT_SHIFT>, <&kp_capswrd LEFT_SHIFT 0>;
-
-            tapping-term-ms = <180>;
-        };
-
-        thm_mo_sk: thm_mo_sk {
-            compatible = "zmk,behavior-hold-tap";
-            label = "THM_MO_SK";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "balanced";
-            quick-tap-ms = <(-1)>;
-            bindings = <&mo>, <&macro_sk>;
-        };
-
         mods_d_from_ctrl_d: mods_d_from_ctrl_d {
             compatible = "zmk,behavior-mod-morph";
             label = "MODS_D_FROM_CTRL_D";
@@ -413,17 +311,6 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
             keep-mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)>;
         };
 
-        kp_capswrd: kp_capswrd {
-            compatible = "zmk,behavior-hold-tap";
-            label = "KP_CAPSWRD";
-            bindings = <&kp>, <&caps_word>;
-
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
-        };
-
         close_or_tap: close_or_tap {
             compatible = "zmk,behavior-hold-tap";
             label = "CLOSE_OR_TAP";
@@ -432,6 +319,34 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+
+        l_mt_sft: l_mt_sft {
+            compatible = "zmk,behavior-hold-tap";
+            label = "L_MT_SFT";
+            #binding-cells = <2>;
+            tapping-term-ms = <230>;
+            flavor = "balanced";
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&kp>;
+
+            require-prior-idle-ms = <200>;
+            hold-trigger-key-positions = <16 17 20 21 28 29 30 31 32 33 5 6 7 8 9 17 18 19 20 21 42 40 41>;
+            hold-trigger-on-release;
+        };
+
+        r_mt_sft: r_mt_sft {
+            compatible = "zmk,behavior-hold-tap";
+            label = "R_MT_SFT";
+            #binding-cells = <2>;
+            tapping-term-ms = <230>;
+            flavor = "balanced";
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&kp>;
+
+            require-prior-idle-ms = <200>;
+            hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 15 22 23 24 25 26 27 36 34 35 39 38 37>;
+            hold-trigger-on-release;
+        };
     };
 
     keymap {
@@ -439,10 +354,10 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
 
         default_layer {
             bindings = <
-&kp Q                 &kp W      &kp E             &kp R             &kp T                                                                        &kp Y  &kp U              &kp I              &kp O           &kp P
-&l_mt LEFT_CONTROL A  &kp S      &l_mt LEFT_ALT D  &l_mt LEFT_GUI F  &kp G                                  &kp LEFT_BRACKET       &kp MINUS      &kp H  &r_mt RIGHT_GUI J  &r_mt RIGHT_ALT K  &kp L           &r_mt RIGHT_CONTROL SEMI
-&l_mt LEFT_SHIFT Z    &kp X      &kp C             &kp V             &kp B                                  &kp RIGHT_BRACKET      &kp EQUAL      &kp N  &kp M              &kp COMMA          &scrl_mo 4 DOT  &r_mt RIGHT_SHIFT SLASH
-&kp TAB               &kp GRAVE  &kp SINGLE_QUOTE  &thm_mo_sl 6 6    &thm_mo 2 SPACE SMART_NUM MAGIC_SHIFT  &thm_mo 1 SPACE        &kp BACKSLASH
+&kp Q                 &kp W                   &kp E             &kp R             &kp T                                                                        &kp Y  &kp U              &kp I              &kp O                    &kp P
+&l_mt LEFT_CONTROL A  &l_mt_sft LEFT_SHIFT S  &l_mt LEFT_ALT D  &l_mt LEFT_GUI F  &kp G                                  &kp LEFT_BRACKET       &kp MINUS      &kp H  &r_mt RIGHT_GUI J  &r_mt RIGHT_ALT K  &r_mt_sft RIGHT_SHIFT L  &r_mt RIGHT_CONTROL SEMI
+&kp Z                 &kp X                   &kp C             &kp V             &kp B                                  &kp RIGHT_BRACKET      &kp EQUAL      &kp N  &kp M              &kp COMMA          &scrl_mo 4 DOT           &kp SLASH
+&kp TAB               &kp GRAVE               &kp SINGLE_QUOTE  &thm_mo_sl 6 6    &thm_mo 2 SPACE SMART_NUM MAGIC_SHIFT  &thm_mo 1 SPACE        &kp BACKSLASH
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
