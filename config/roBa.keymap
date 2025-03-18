@@ -376,18 +376,18 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
         NUM {
             bindings = <
 &kp ASTERISK   &kp N7                   &kp N8             &kp N9                &kp PLUS                                                      &kp RA(V)  &beg_buf_cncl   &kp LA(B)       &kp LA(F)      &end_buf_cncl
-&kp SLASH      &l_mt LEFT_GUI NUMBER_4  &l_mt LEFT_ALT N5  &l_mt LCTRL NUMBER_6  &kp MINUS   &kp LEFT_BRACKET       &kp LS(LG(LEFT_BRACKET))   &kp RC(V)  &sk RCTRL       &sk RIGHT_ALT   &kp RIGHT_GUI  &kp RIGHT_SHIFT
-&kp BACKSLASH  &kp NUMBER_1             &kp NUMBER_2       &kp NUMBER_3          &kp EQUAL   &kp RIGHT_BRACKET      &kp LS(LG(RIGHT_BRACKET))  &C_x_5_2   &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW   &kp RIGHT
+&kp SLASH      &l_mt LEFT_GUI NUMBER_4  &l_mt LEFT_ALT N5  &l_mt LCTRL NUMBER_6  &kp MINUS   &kp LEFT_BRACKET       &kp LS(LA(LEFT_BRACKET))   &kp RC(V)  &sk RCTRL       &sk RIGHT_ALT   &kp RIGHT_GUI  &kp RIGHT_SHIFT
+&kp BACKSLASH  &kp NUMBER_1             &kp NUMBER_2       &kp NUMBER_3          &kp EQUAL   &kp RIGHT_BRACKET      &kp LS(LA(RIGHT_BRACKET))  &C_x_5_2   &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW   &kp RIGHT
 &trans         &kp GRAVE                &kp NUMBER_0       &kp COMMA             &kp PERIOD  &kp K_CANCEL           &trans                     &trans                                                    &C_x_5_0
             >;
         };
 
         MEDIA {
             bindings = <
-&kp LS(LC(TAB))  &kp C_PLAY_PAUSE   &kp C_PREV       &kp C_NEXT       &none                                       &kp LA(V)  &kp RS(RA(COMMA))  &kp RA(B)       &kp RA(F)      &kp RS(RA(PERIOD))
-&kp LC(TAB)      &kp F7             &kp F6           &kp F8           &kp F15  &kp LA(LEFT_BRACKET)       &trans  &kp RC(V)  &kp RCTRL          &kp RIGHT_ALT   &kp RIGHT_GUI  &kp RIGHT_SHIFT
-&kp LEFT_ARROW   &kp DOWN_ARROW     &kp UP_ARROW     &kp RIGHT_ARROW  &kp F14  &kp LA(RIGHT_BRACKET)      &trans  &C_x_5_2   &kp LEFT_ARROW     &kp DOWN_ARROW  &kp UP_ARROW   &kp RIGHT
-&kp K_MUTE       &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &trans           &trans   &trans                     &trans  &trans                                                       &C_x_5_0
+&kp LS(LC(TAB))  &kp C_PLAY_PAUSE   &kp C_PREV       &kp C_NEXT       &none                                                      &kp LA(V)  &kp RS(RA(COMMA))  &kp RA(B)       &kp RA(F)      &kp RS(RA(PERIOD))
+&kp LC(TAB)      &kp F7             &kp F6           &kp F8           &kp F15  &kp LG(LEFT_BRACKET)       &kp LA(LEFT_BRACKET)   &kp RC(V)  &kp RCTRL          &kp RIGHT_ALT   &kp RIGHT_GUI  &kp RIGHT_SHIFT
+&kp LEFT_ARROW   &kp DOWN_ARROW     &kp UP_ARROW     &kp RIGHT_ARROW  &kp F14  &kp LG(RIGHT_BRACKET)      &kp LA(RIGHT_BRACKET)  &C_x_5_2   &kp LEFT_ARROW     &kp DOWN_ARROW  &kp UP_ARROW   &kp RIGHT
+&kp K_MUTE       &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &trans           &trans   &trans                     &trans                 &trans                                                       &C_x_5_0
             >;
         };
 
@@ -420,10 +420,10 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
 
         WIN_NAV {
             bindings = <
-&kp LS(LC(TAB))  &kp LC(LA(N7))                   &kp LC(LA(N8))             &kp LC(LA(N9))          &kp LS(LG(NUMBER_4))                                     &kp LG(LA(NUMBER_6))  &kp LG(LA(NUMBER_1))    &kp LG(LA(NUMBER_2))  &kp LG(LA(NUMBER_3))  &kp LG(LA(N8))
-&kp LC(TAB)      &l_mt LEFT_GUI LC(LA(NUMBER_4))  &l_mt LEFT_ALT LC(LA(N5))  &l_mt LCTRL LC(LA(N6))  &kp LC(LA(G))         &kp LA(LEFT_BRACKET)       &none   &kp LG(LA(N7))        &kp RA(RG(LEFT_ARROW))  &none                 &none                 &kp RA(RG(RIGHT))
-&kp LG(LA(X))    &kp LC(LA(NUMBER_1))             &kp LC(LA(NUMBER_2))       &kp LC(LA(NUMBER_3))    &none                 &kp LA(RIGHT_BRACKET)      &none   &none                 &kp RC(LEFT_ARROW)      &kp RC(DOWN_ARROW)    &kp RC(UP_ARROW)      &kp RC(RIGHT)
-&kp LC(LA(Z))    &none                            &kp LC(LA(N0))             &trans                  &trans                &trans                     &trans  &trans                                                                                    &none
+&kp LS(LC(TAB))  &kp LC(LA(N7))                   &kp LC(LA(N8))             &kp LC(LA(N9))          &kp LS(LG(NUMBER_4))                                                            &kp LG(LA(NUMBER_6))  &kp LG(LA(NUMBER_1))    &kp LG(LA(NUMBER_2))  &kp LG(LA(NUMBER_3))  &kp LG(LA(N8))
+&kp LC(TAB)      &l_mt LEFT_GUI LC(LA(NUMBER_4))  &l_mt LEFT_ALT LC(LA(N5))  &l_mt LCTRL LC(LA(N6))  &kp LC(LA(G))         &kp LG(LS(LEFT_BRACKET))       &kp RA(RS(LEFT_BRACKET))   &kp LG(LA(N7))        &kp RA(RG(LEFT_ARROW))  &none                 &none                 &kp RA(RG(RIGHT))
+&kp LG(LA(X))    &kp LC(LA(NUMBER_1))             &kp LC(LA(NUMBER_2))       &kp LC(LA(NUMBER_3))    &none                 &kp LG(LS(RIGHT_BRACKET))      &kp RA(RS(RIGHT_BRACKET))  &none                 &kp RC(LEFT_ARROW)      &kp RC(DOWN_ARROW)    &kp RC(UP_ARROW)      &kp RC(RIGHT)
+&kp LC(LA(Z))    &none                            &kp LC(LA(N0))             &trans                  &trans                &trans                         &trans                     &trans                                                                                    &none
             >;
         };
 
