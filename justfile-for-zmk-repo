@@ -73,9 +73,14 @@ setup-zmk: setup-venv install-west init-zmk install-python-deps setup-shield-lin
 
 # === roBa Keyboard Commands ===
 
+pristine-opt := ""
+
 # Build the roBa right half keyboard firmware
-build-roba-right: _ensure-firmware-dir
-    . {{venv_dir}}/bin/activate && cd app && west build -d build/roba_R -b seeeduino_xiao_ble -S studio-rpc-usb-uart \
+build-roba-right pristine=pristine-opt: _ensure-firmware-dir
+    . {{venv_dir}}/bin/activate && cd app && \
+        west build {{ if pristine == "pristine" { "-p" } else { "" } }} \
+        -d build/roba_R -b seeeduino_xiao_ble \
+        -S studio-rpc-usb-uart \
         -- -DZMK_CONFIG="{{roba_config_dir}}" \
         -DSHIELD=roBa_R \
         -DZMK_EXTRA_MODULES="{{modules}}"
@@ -83,8 +88,11 @@ build-roba-right: _ensure-firmware-dir
     @echo "✅ roBa right half firmware built: {{firmware_dir}}/roba_right.uf2"
 
 # Build the roBa left half keyboard firmware
-build-roba-left: _ensure-firmware-dir
-    . {{venv_dir}}/bin/activate && cd app && west build -d build/roba_L -b seeeduino_xiao_ble \
+build-roba-left pristine=pristine-opt: _ensure-firmware-dir
+    . {{venv_dir}}/bin/activate && cd app && \
+        west build {{ if pristine == "pristine" { "-p" } else { "" } }} \
+        -d build/roba_R -b seeeduino_xiao_ble \
+        -S studio-rpc-usb-uart \
         -- -DZMK_CONFIG="{{roba_config_dir}}" \
         -DSHIELD=roBa_L \
         -DZMK_EXTRA_MODULES="{{modules}}"
@@ -92,8 +100,11 @@ build-roba-left: _ensure-firmware-dir
     @echo "✅ roBa left half firmware built: {{firmware_dir}}/roba_left.uf2"
 
 # Build the roBa settings reset firmware
-build-roba-reset: _ensure-firmware-dir
-    . {{venv_dir}}/bin/activate && cd app && west build -d build/roba_reset -b seeeduino_xiao_ble \
+build-roba-reset pristine=pristine-opt: _ensure-firmware-dir
+    . {{venv_dir}}/bin/activate && cd app && \
+        west build {{ if pristine == "pristine" { "-p" } else { "" } }} \
+        -d build/roba_R -b seeeduino_xiao_ble \
+        -S studio-rpc-usb-uart \
         -- -DZMK_CONFIG="{{roba_config_dir}}" \
         -DSHIELD=settings_reset \
         -DZMK_EXTRA_MODULES="{{modules}}"
@@ -101,7 +112,7 @@ build-roba-reset: _ensure-firmware-dir
     @echo "✅ roBa settings reset firmware built: {{firmware_dir}}/roba_settings_reset.uf2"
 
 # Build all roBa firmware variants
-build-roba-all: build-roba-right build-roba-left build-roba-reset
+build-roba-all pristine=pristine-opt: (build-roba-right pristine) (build-roba-left pristine) (build-roba-reset pristine)
     @echo "✅ All roBa firmware variants built successfully!"
     @echo "Files available in {{firmware_dir}}/:"
     @ls -la {{firmware_dir}}/roba_*.uf2
