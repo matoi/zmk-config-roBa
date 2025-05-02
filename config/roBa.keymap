@@ -433,10 +433,10 @@ ZMK_HOLD_TAP(mo_shift, bindings = <&mo>, <&magic_shift_tap>; flavor = "balanced"
 
         WIN_NAV {
             bindings = <
-&kp LS(LC(TAB))  &kp LC(LA(N7))                   &kp LC(LA(N8))             &kp LC(LA(N9))          &kp LS(LG(NUMBER_4))                                                            &kp LG(LA(NUMBER_6))  &kp LG(LA(NUMBER_1))    &kp LG(LA(NUMBER_2))  &kp LG(LA(NUMBER_3))  &kp LG(LA(N8))
-&kp LC(TAB)      &l_mt LEFT_GUI LC(LA(NUMBER_4))  &l_mt LEFT_ALT LC(LA(N5))  &l_mt LCTRL LC(LA(N6))  &kp LC(LA(G))         &kp LG(LS(LEFT_BRACKET))       &kp RA(RS(LEFT_BRACKET))   &kp LG(LA(N7))        &kp RA(RG(LEFT_ARROW))  &none                 &none                 &kp RA(RG(RIGHT))
-&kp LG(LA(X))    &kp LC(LA(NUMBER_1))             &kp LC(LA(NUMBER_2))       &kp LC(LA(NUMBER_3))    &none                 &kp LG(LS(RIGHT_BRACKET))      &kp RA(RS(RIGHT_BRACKET))  &none                 &kp RC(LEFT_ARROW)      &kp RC(DOWN_ARROW)    &kp RC(UP_ARROW)      &kp RC(RIGHT)
-&kp LC(LA(Z))    &none                            &kp LC(LA(N0))             &trans                  &trans                &trans                         &trans                     &trans                                                                                    &none
+&kp LS(LC(TAB))  &kp LC(LA(N7))                   &kp LC(LA(N8))             &kp LC(LA(N9))          &kp LC(LA(N0))                                                            &kp LG(LA(NUMBER_6))  &kp LG(LA(NUMBER_1))    &kp LG(LA(NUMBER_2))  &kp LG(LA(NUMBER_3))  &kp LG(LA(N8))
+&kp LC(TAB)      &l_mt LEFT_GUI LC(LA(NUMBER_4))  &l_mt LEFT_ALT LC(LA(N5))  &l_mt LCTRL LC(LA(N6))  &kp LC(LA(G))   &kp LG(LS(LEFT_BRACKET))       &kp RA(RS(LEFT_BRACKET))   &kp LG(LA(N7))        &kp RA(RG(LEFT_ARROW))  &none                 &none                 &kp RA(RG(RIGHT))
+&kp LG(LA(X))    &kp LC(LA(NUMBER_1))             &kp LC(LA(NUMBER_2))       &kp LC(LA(NUMBER_3))    &none           &kp LG(LS(RIGHT_BRACKET))      &kp RA(RS(RIGHT_BRACKET))  &none                 &kp RC(LEFT_ARROW)      &kp RC(DOWN_ARROW)    &kp RC(UP_ARROW)      &kp RC(RIGHT)
+&kp LC(LA(Z))    &kp LS(LG(NUMBER_4))             &trans                     &trans                  &trans          &trans                         &trans                     &trans                                                                                    &none
             >;
         };
 
