@@ -43,7 +43,7 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
 // https://github.com/urob/zmk-auto-layer?tab=readme-ov-file#example-num-word
 // Need to add shift keys to continue-list for symbols.
 
-&num_word { continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL RSHFT LSFT RCTRL LCTRL RALT LALT RGUI LGUI RC(H) LC(H) RC(D) LC(D) RA(H) LA(H) RA(D) LA(D) LC(B) RC(B) LC(N) RC(N) LC(P) RC(P) LC(F) RC(F) LA(B) RA(B) LA(N) RA(N) LA(P) RA(P) LA(F) RA(F)>; };
+&num_word { continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL RSHFT LSFT RCTRL LCTRL RALT LALT RGUI LGUI RC(H) LC(H) RC(D) LC(D) RA(H) LA(H) RA(D) LA(D) LC(B) RC(B) LC(N) RC(N) LC(P) RC(P) LC(F) RC(F) LA(B) RA(B) LA(N) RA(N) LA(P) RA(P) LA(F) RA(F) LEFT DOWN UP RIGHT>; };
 
 #define MEDIA_SHIFT &mo_shift MEDIA 0
 #define WINNAV_SHIFT &mo_shift WINNAV 0
