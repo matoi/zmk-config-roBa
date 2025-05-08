@@ -452,10 +452,10 @@ ZMK_HOLD_TAP(mo_shift, bindings = <&mo>, <&magic_shift_tap>; flavor = "balanced"
 
         SYMBOL {
             bindings = <
-&trans                 &kp AMPS               &kp ASTERISK            &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS                                        &trans                 &kp LA(B)                  &trans                 &trans                 &kp LA(F)
-&l_mt LEFT_SHIFT PIPE  &l_mt LEFT_GUI DOLLAR  &l_mt LEFT_ALT PERCENT  &l_mt LCTRL CARET     &l_mt LCTRL COLON      &kp LEFT_BRACE       &kp RC(RS(TAB))  &kp RG(LEFT_BRACKET)   &r_mt RCTRL RS(RA(COMMA))  &r_mt RIGHT_ALT RC(V)  &r_mt RIGHT_GUI RA(V)  &r_mt RIGHT_SHIFT RS(RA(PERIOD))
-&trans                 &kp EXCLAMATION        &kp AT                  &kp HASH              &trans                 &kp RIGHT_BRACE      &kp RC(TAB)      &kp RG(RIGHT_BRACKET)  &kp LEFT_ARROW             &kp DOWN_ARROW         &kp UP_ARROW           &kp RIGHT_ARROW
-&trans                 &kp TILDE              &kp DOUBLE_QUOTES       &kp LESS_THAN         &kp GREATER_THAN       &kp QUESTION         &trans           &trans                                                                                          &trans
+&kp LS(LC(TAB))           &kp AMPS               &kp ASTERISK            &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS                                                               &trans                 &kp LA(B)                  &trans                 &trans                 &kp LA(F)
+&l_mt LEFT_SHIFT LC(TAB)  &l_mt LEFT_GUI DOLLAR  &l_mt LEFT_ALT PERCENT  &l_mt LCTRL CARET     &l_mt LCTRL LA(LEFT_BRACKET)  &kp LG(LEFT_BRACKET)       &kp RS(RA(LEFT_BRACKET))   &kp RG(LEFT_BRACKET)   &r_mt RCTRL RS(RA(COMMA))  &r_mt RIGHT_ALT RC(V)  &r_mt RIGHT_GUI RA(V)  &r_mt RIGHT_SHIFT RS(RA(PERIOD))
+&kp PIPE                  &kp EXCLAMATION        &kp AT                  &kp HASH              &kp LA(RIGHT_BRACKET)         &kp LG(RIGHT_BRACKET)      &kp RS(RA(RIGHT_BRACKET))  &kp RG(RIGHT_BRACKET)  &kp LEFT_ARROW             &kp DOWN_ARROW         &kp UP_ARROW           &kp RIGHT_ARROW
+&trans                    &kp TILDE              &kp DOUBLE_QUOTES       &kp LESS_THAN         &kp GREATER_THAN              &kp QUESTION               &trans                     &trans                                                                                          &trans
             >;
         };
     };
