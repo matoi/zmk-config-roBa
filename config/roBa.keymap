@@ -1,5 +1,5 @@
 #include <behaviors/num_word.dtsi> // Requires auto-layer module.
-#include "zmk-helpers/helper.h"
+#include "zmk-helpers/helper.h" // Defines ZMK_... macros
 #include "zmk-helpers/unicode-chars/greek.dtsi"
 #include "zmk-helpers/unicode-chars/german.dtsi"
 #include <behaviors.dtsi>
@@ -50,6 +50,11 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
 
 ZMK_HOLD_TAP(mo_shift, bindings = <&mo>, <&magic_shift_tap>; flavor = "balanced";
              tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
+
+// Alt+Tab swapper, requires tri-state module.
+/* ZMK_TRI_STATE(swapper, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>; */
+/*               ignored-key-positions = <LT2 RT2 RM1 RM2 RM3>;) */
+ZMK_TRI_STATE(swapper, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;)
 
 &mt {
     flavor = "balanced";

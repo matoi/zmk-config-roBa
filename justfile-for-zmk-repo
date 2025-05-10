@@ -1,11 +1,15 @@
 # ZMK Firmware Build Configuration
 # Place this file in the root directory of your ZMK repository
 
+# module の追加方法
+# module を clone、modules 変数に追加、roba の config/west.yaml にモジュールの設定を追加。roba keymap にて include
+
 # Common variables
 modules := "/Users/matoi/ghq/github.com/urob/zmk-helpers;\
 /Users/matoi/ghq/github.com/kumamuk-git/zmk-pmw3610-driver;\
 /Users/matoi/ghq/github.com/urob/zmk-auto-layer;\
-/Users/matoi/ghq/github.com/urob/zmk-adaptive-key"
+/Users/matoi/ghq/github.com/urob/zmk-adaptive-key;\
+/Users/matoi/ghq/github.com/dhruvinsh/zmk-tri-state"
 firmware_dir := "firmware"
 venv_dir := ".venv"
 
