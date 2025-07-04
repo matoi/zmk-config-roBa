@@ -1,0 +1,273 @@
+# ZMK Firmware Build Configuration
+# Place this file in the root directory of your ZMK repository
+
+# module の追加方法
+# module を clone、modules_... 変数に追加、roba の config/west.yaml にモジュールの設定を追加。roba keymap にて include
+
+firmware_dir := "firmware"
+venv_dir := ".venv"
+
+# Keyboard-specific configuration directories
+config_dir_roba := "/Users/matoi/ghq/github.com/matoi/zmk-config-roBa/config"
+config_dir_nape := "/Users/matoi/ghq/github.com/matoi/zmk-config-nape/config"
+
+modules_roba := "/Users/matoi/ghq/github.com/urob/zmk-helpers;\
+/Users/matoi/ghq/github.com/kumamuk-git/zmk-pmw3610-driver;\
+/Users/matoi/ghq/github.com/urob/zmk-auto-layer;\
+/Users/matoi/ghq/github.com/urob/zmk-adaptive-key;\
+/Users/matoi/ghq/github.com/dhruvinsh/zmk-tri-state"
+
+modules_nape := "/Users/matoi/ghq/github.com/urob/zmk-helpers;\
+/Users/matoi/ghq/github.com/urob/zmk-auto-layer;\
+/Users/matoi/ghq/github.com/urob/zmk-adaptive-key;\
+/Users/matoi/ghq/github.com/dhruvinsh/zmk-tri-state;\
+/Users/matoi/ghq/github.com/karbou12/zmk-pmw3610-driver;\
+/Users/matoi/ghq/github.com/caksoylar/zmk-rgbled-widget"
+
+# Default recipe shows help
+default:
+    @just --list
+
+# Create firmware output directory if it doesn't exist
+_ensure-firmware-dir:
+    mkdir -p {{firmware_dir}}
+
+# === Setup Commands ===
+
+# おおむね下記の通りやるとビルドが可能になるはずだが、途中まで進んだ状態になると自動実行が難しくなる
+
+# Setup Python virtual environment
+setup-venv:
+    @echo "🐍 Setting up Python virtual environment..."
+    python -m venv {{venv_dir}}
+    . {{venv_dir}}/bin/activate && pip install --upgrade pip
+    @echo "✅ Virtual environment created at {{venv_dir}}"
+
+# Install west tool
+install-west: setup-venv
+    @echo "🛠 Installing west tool..."
+    . {{venv_dir}}/bin/activate && pip install west
+    @echo "✅ West tool installed"
+
+# Initialize and update ZMK repository
+init-zmk:
+    @echo "🔄 Initializing ZMK workspace..."
+    . {{venv_dir}}/bin/activate && west init -l app/
+    . {{venv_dir}}/bin/activate && west update
+    . {{venv_dir}}/bin/activate && west zephyr-export
+    @echo "✅ ZMK workspace initialized"
+
+# Install Python requirements
+install-python-deps:
+    @echo "📦 Installing Python dependencies..."
+    . {{venv_dir}}/bin/activate && pip install -r zephyr/scripts/requirements-base.txt || echo "⚠️ Some packages may not have installed properly on macOS"
+    . {{venv_dir}}/bin/activate && pip install grpcio-tools
+    @echo "✅ Python dependencies installed"
+
+# Setup shield symbolic link
+setup-shield-link:
+    @echo "🔗 Creating shield symbolic link..."
+    mkdir -p app/boards/shields
+    cd app/boards/shields && rm -f roBa nape && \
+    ln -s {{config_dir_roba}}/boards/shields/roBa/ ./roBa && \
+    ln -s {{config_dir_roba}}/boards/shields/nape/ ./nape
+    @echo "✅ Shield link created"
+
+# Full ZMK setup process
+setup-zmk: setup-venv install-west init-zmk install-python-deps setup-shield-link
+    @echo "✅ ZMK setup complete!"
+    @echo ""
+    @echo "⚠️ NOTE: Zephyr SDK installation is not included and should be done manually if needed."
+    @echo "⚠️ NOTE: Zephyr SDK archive specified in the document below is for x86.  You should get aarch64 version if you are using apple silicon."
+    @echo "📝 For information on installing Zephyr SDK, visit: https://docs.zephyrproject.org/latest/develop/getting_started/index.html"
+    @echo ""
+    @echo "🔥 You're ready to build firmware! Try 'just build-roba-all' to build all firmware variants."
+
+# === roBa Keyboard Commands ===
+
+pristine-opt := ""
+
+# Build the roBa right half keyboard firmware
+build-roba-right pristine=pristine-opt: _ensure-firmware-dir
+    . {{venv_dir}}/bin/activate && cd app && \
+        west build {{ if pristine == "pristine" { "-p" } else { "" } }} \
+        -d build/roba_R -b seeeduino_xiao_ble \
+        -S studio-rpc-usb-uart \
+        -- -DZMK_CONFIG="{{config_dir_roba}}" \
+        -DSHIELD=roBa_R \
+        -DZMK_EXTRA_MODULES="{{modules_roba}}"
+    cp app/build/roba_R/zephyr/zmk.uf2 {{firmware_dir}}/roba_right.uf2
+    @echo "✅ roBa right half firmware built: {{firmware_dir}}/roba_right.uf2"
+
+# Build the Nape trackball firmware
+build-nape pristine=pristine-opt: _ensure-firmware-dir
+    . {{venv_dir}}/bin/activate && cd app && \
+        west build {{ if pristine == "pristine" { "-p" } else { "" } }} \
+        -d build/nape -b seeeduino_xiao_ble \
+        -S studio-rpc-usb-uart \
+        -- -DZMK_CONFIG="{{config_dir_nape}}" \
+        -DSHIELD=nape \
+        -DZMK_EXTRA_MODULES="{{modules_nape}}"
+    cp app/build/nape/zephyr/zmk.uf2 {{firmware_dir}}/nape.uf2
+    @echo "✅ Nape firmware built: {{firmware_dir}}/nape.uf2"
+
+# Build the roBa left half keyboard firmware
+build-roba-left pristine=pristine-opt: _ensure-firmware-dir
+    . {{venv_dir}}/bin/activate && cd app && \
+        west build {{ if pristine == "pristine" { "-p" } else { "" } }} \
+        -d build/roba_R -b seeeduino_xiao_ble \
+        -S studio-rpc-usb-uart \
+        -- -DZMK_CONFIG="{{config_dir_roba}}" \
+        -DSHIELD=roBa_L \
+        -DZMK_EXTRA_MODULES="{{modules_roba}}"
+    cp app/build/roba_L/zephyr/zmk.uf2 {{firmware_dir}}/roba_left.uf2
+    @echo "✅ roBa left half firmware built: {{firmware_dir}}/roba_left.uf2"
+
+# Build the roBa settings reset firmware
+build-roba-reset pristine=pristine-opt: _ensure-firmware-dir
+    . {{venv_dir}}/bin/activate && cd app && \
+        west build {{ if pristine == "pristine" { "-p" } else { "" } }} \
+        -d build/roba_R -b seeeduino_xiao_ble \
+        -S studio-rpc-usb-uart \
+        -- -DZMK_CONFIG="{{config_dir_roba}}" \
+        -DSHIELD=settings_reset \
+        -DZMK_EXTRA_MODULES="{{modules_roba}}"
+    cp app/build/roba_reset/zephyr/zmk.uf2 {{firmware_dir}}/roba_settings_reset.uf2
+    @echo "✅ roBa settings reset firmware built: {{firmware_dir}}/roba_settings_reset.uf2"
+
+# Nape does not have a reset firmware?
+# Build the Nape settings reset firmware
+# build-nape-reset pristine=pristine-opt: _ensure-firmware-dir
+#     . {{venv_dir}}/bin/activate &&cd app && \
+#         west build {{ if pristine == "pristine" { "-p" } else { "" } }} \
+#         -d build/nape -b seeeduino_xiao_ble \
+#         -S studio-rpc-usb-uart \
+#         -- -DZMK_CONFIG="{{config_dir_nape}}" \
+#         -DSHIELD=settings_reset \
+#         -DZMK_EXTRA_MODULES="{{modules_nape}}"
+#     cp app/build/nape_reset/zephyr/zmk.uf2 {{firmware_dir}}/nape_settings_reset.uf2
+#     @echo "✅ Nape settings reset firmware built: {{firmware_dir}}/nape_settings_reset.uf2"
+
+# Build all roBa firmware variants
+build-roba-all pristine=pristine-opt: (build-roba-right pristine) (build-roba-left pristine) (build-roba-reset pristine)
+    @echo "✅ All roBa firmware variants built successfully!"
+    @echo "Files available in {{firmware_dir}}/:"
+    @ls -la {{firmware_dir}}/roba_*.uf2
+
+# Flash the roBa right side firmware - AppleScript approach
+flash-roba-right: build-roba-right
+    @echo "⏳ Waiting for XIAO-SENSE drive to appear..."
+    @while [ ! -d "/Volumes/XIAO-SENSE" ]; do sleep 0.5; done
+    @echo "📥 Detected bootloader drive! Flashing right half firmware..."
+    @osascript -e 'tell application "Finder"' \
+               -e '  duplicate file POSIX file "'"$(pwd)/{{firmware_dir}}/roba_right.uf2"'" to disk "XIAO-SENSE" with replacing' \
+               -e 'end tell'
+    @echo "✅ Firmware copied to device. Wait for it to restart..."
+    @echo "⚠️ IMPORTANT: This was RIGHT side firmware. Make sure this is the correct half!"
+
+# Flash the roBa left side firmware - AppleScript approach
+flash-roba-left: build-roba-left
+    @echo "⏳ Waiting for XIAO-SENSE drive to appear..."
+    @while [ ! -d "/Volumes/XIAO-SENSE" ]; do sleep 0.5; done
+    @echo "📥 Detected bootloader drive! Flashing left half firmware..."
+    @osascript -e 'tell application "Finder"' \
+               -e '  duplicate file POSIX file "'"$(pwd)/{{firmware_dir}}/roba_left.uf2"'" to disk "XIAO-SENSE" with replacing' \
+               -e 'end tell'
+    @echo "✅ Firmware copied to device. Wait for it to restart..."
+    @echo "⚠️ IMPORTANT: This was LEFT side firmware. Make sure this is the correct half!"
+
+# Flash the roBa reset firmware - AppleScript approach
+flash-roba-reset: build-roba-reset
+    @echo "⏳ Waiting for XIAO-SENSE drive to appear..."
+    @while [ ! -d "/Volumes/XIAO-SENSE" ]; do sleep 0.5; done
+    @echo "📥 Detected bootloader drive! Flashing settings reset firmware..."
+    @osascript -e 'tell application "Finder"' \
+               -e '  duplicate file POSIX file "'"$(pwd)/{{firmware_dir}}/roba_settings_reset.uf2"'" to disk "XIAO-SENSE" with replacing' \
+               -e 'end tell'
+    @echo "✅ Firmware copied to device. Wait for it to restart..."
+
+# === General Commands ===
+
+# Clean build directories
+clean-build:
+    rm -rf app/build
+    @echo "🧹 Build directories cleaned"
+
+# Clean firmware output directory
+clean-firmware:
+    rm -rf {{firmware_dir}}
+    @echo "🧹 Firmware directory cleaned"
+
+# Clean virtualenv
+clean-venv:
+    rm -rf {{venv_dir}}
+    @echo "🧹 Virtual environment cleaned"
+
+# Clean everything
+clean-all: clean-build clean-firmware clean-venv
+    @echo "🧹 All build artifacts cleaned"
+
+# Update all modules_roba (git pull)
+update-modules:
+    @echo "Updating modules_roba..."
+    cd $(dirname "$(echo "{{modules_roba}}" | cut -d';' -f1)") && git pull && \
+    cd $(dirname "$(echo "{{modules_roba}}" | cut -d';' -f2)") && git pull && \
+    cd $(dirname "$(echo "{{modules_roba}}" | cut -d';' -f3)") && git pull && \
+    cd $(dirname "$(echo "{{modules_roba}}" | cut -d';' -f4)") && git pull
+    @echo "✅ All modules_roba updated"
+
+# List all built firmware files
+list-firmware:
+    @echo "Available firmware files:"
+    @find {{firmware_dir}} -name "*.uf2" -exec ls -la {} \;
+
+# Create a timestamp-labeled backup of current firmware
+backup-firmware:
+    @timestamp=$(date "+%Y%m%d-%H%M%S") && \
+    mkdir -p {{firmware_dir}}/backups/$timestamp && \
+    cp -v {{firmware_dir}}/*.uf2 {{firmware_dir}}/backups/$timestamp/ 2>/dev/null || echo "No firmware to backup"
+    @echo "✅ Firmware backed up to {{firmware_dir}}/backups/$(date "+%Y%m%d-%H%M%S")/"
+
+# Show information about the build environment
+info:
+    @echo "=== Keyboard Config Directories ==="
+    @echo "roBa: {{config_dir_roba}}"
+    @echo ""
+    @echo "=== Extra Modules ==="
+    @echo "{{modules_roba}}" | tr ';' '\n' | sed 's/^/- /'
+    @echo ""
+    @echo "=== Firmware Directory ==="
+    @echo "{{firmware_dir}}"
+    @echo ""
+    @echo "=== Python Environment ==="
+    @if [ -d "{{venv_dir}}" ]; then echo "Virtual environment: {{venv_dir}} (installed)"; else echo "Virtual environment: {{venv_dir}} (not installed)"; fi
+    @if [ -d "{{venv_dir}}" ]; then . {{venv_dir}}/bin/activate && which west && west --version || echo "West not installed"; fi
+
+# Show flashing instructions
+flash-help:
+    @echo "=== Flash Instructions ==="
+    @echo "1. Put your keyboard into bootloader mode (usually by double-tapping reset button or a specific key combo)"
+    @echo "2. Once the device is in bootloader mode, run one of these commands:"
+    @echo "   - just flash-roba-right   (for right half)"
+    @echo "   - just flash-roba-left    (for left half)"
+    @echo "   - just flash-roba-reset   (for settings reset)"
+    @echo ""
+    @echo "3. The system will automatically detect the drive and copy the firmware"
+    @echo "4. Wait for your keyboard to restart with the new firmware"
+    @echo ""
+    @echo "⚠️ IMPORTANT: Make sure you're flashing the correct firmware to the correct half!"
+
+# Show setup instructions
+setup-help:
+    @echo "=== ZMK Setup Instructions ==="
+    @echo "To set up the ZMK environment, run these commands in order:"
+    @echo ""
+    @echo "1. just setup-venv          - Create Python virtual environment"
+    @echo "2. just install-west        - Install the west tool"
+    @echo "3. just init-zmk            - Initialize ZMK workspace"
+    @echo "4. just install-python-deps - Install Python dependencies"
+    @echo "5. just setup-shield-link   - Create shield symbolic link"
+    @echo ""
+    @echo "Or run everything at once with: just setup-zmk"
+    @echo ""
+    @echo "Note: Zephyr SDK installation is not included and must be done manually if needed."
