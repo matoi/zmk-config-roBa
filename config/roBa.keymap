@@ -110,41 +110,38 @@ ZMK_STICKY_KEY(skq, bindings = <&kp>; release-after-ms = <1000>; quick-release; 
 //
 //
 
-#define QUICK_TAP_MS_WORD 300
+#define QUICK_TAP_MS_WORD           300
+#define TAPPING_TERM_MS_SMART_DANCE 200
 
-/* / { */
-/*     behaviors { */
-/*         tog_off: toggle_layer_off_only { */
-/*             compatible = "zmk,behavior-toggle-layer"; */
-/*             #binding-cells = <1>; */
-/*             display-name = "Toggle Layer Off"; */
-/*             toggle-mode = "off"; */
-/*         }; */
-/*     }; */
-/* }; */
-
-ZMK_MACRO_ONE_PARAM(mo_only, bindings = <&macro_tap &kp K_CANCEL>, <&macro_param_1to1>, <&macro_press &mo MACRO_PLACEHOLDER>, <&macro_pause_for_release>, <&macro_param_1to1>, <&macro_release &mo MACRO_PLACEHOLDER>;)
+#define MACRO_DEFAULT_WAIT_MS_SMART 1
+#define MACRO_DEFAULT_TAP_MS_SMART  1
+ZMK_MACRO_ONE_PARAM(mo_excl, bindings = <&macro_param_1to1>, <&macro_tap &to MACRO_PLACEHOLDER>, <&macro_pause_for_release>, <&macro_param_1to1>, <&macro_tap &tog_off MACRO_PLACEHOLDER>; wait-ms = <MACRO_DEFAULT_WAIT_MS_SMART>; tap-ms = <MACRO_DEFAULT_TAP_MS_SMART>;)
+ZMK_MACRO_ONE_PARAM(sl_excl, bindings = <&macro_tap &to LY_DEF>, <&macro_param_1to1>, <&sl MACRO_PLACEHOLDER>; wait-ms = <MACRO_DEFAULT_WAIT_MS_SMART>; tap-ms = <MACRO_DEFAULT_TAP_MS_SMART>;) // XXX may fail on faster taps even when wait and tap ms are smallest
+/ {
+    behaviors {
+        tog_off: toggle_layer_off_only {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <1>;
+            display-name = "Toggle Layer Off";
+            toggle-mode = "off";
+        };
+    };
+};
 
 //
 // smart_num
 //
-
-#define CONTINUE_LIST_NUMWORD BSPC DEL DOT COMMA MINUS EQUAL RCTRL LCTRL RALT LALT RGUI LGUI RC(H) LC(H) RC(D) LC(D) RA(H) LA(H) RA(D) LA(D) LC(B) RC(B) LC(F) RC(F) LEFT RIGHT
+// modified from https://github.com/urob/zmk-config
+//
 
 // tap: sticky num layer, double tap: num_word to num layer, hold: &to to num layer
-//
-// use &to instead of &mo to disable every layer except for the default layer
 #define SMART_NUM &smart_num LY_NUM 0
-ZMK_HOLD_TAP(smart_num, bindings = <&mo_only>, <&num_dance>; flavor = "balanced"; tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS_WORD>;)
-
-/* ZMK_TAP_DANCE(num_dance, bindings = <&sl LY_NUM>, <&num_word LY_NUM>; tapping-term-ms = <200>;) */
-
-// tap cancel to disable every layer except for the default layer, then do the thing
-ZMK_TAP_DANCE(num_dance, bindings = <&sl_only LY_NUM>, <&num_word_only LY_NUM>; tapping-term-ms = <200>;)
-ZMK_MACRO_ONE_PARAM(sl_only, bindings = <&macro_tap &kp K_CANCEL>, <&macro_param_1to1>, <&sl MACRO_PLACEHOLDER>;)
-ZMK_MACRO_ONE_PARAM(num_word_only, bindings = <&macro_tap &kp K_CANCEL>, <&macro_param_1to1>, <&macro_tap &num_word MACRO_PLACEHOLDER>;)
+ZMK_HOLD_TAP(smart_num, bindings = <&mo_excl>, <&num_dance>; flavor = "hold-preferred"; tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS_WORD>;)
+ZMK_TAP_DANCE(num_dance, bindings = <&sl_excl LY_NUM>, <&num_word_excl LY_NUM>; tapping-term-ms = <TAPPING_TERM_MS_SMART_DANCE>;)
+ZMK_MACRO_ONE_PARAM(num_word_excl, bindings = <&macro_tap &kp K_CANCEL>, <&macro_param_1to1>, <&macro_tap &num_word MACRO_PLACEHOLDER>;)
 
 // https://github.com/urob/zmk-auto-layer?tab=readme-ov-file#example-num-word
+#define CONTINUE_LIST_NUMWORD BSPC DEL DOT COMMA MINUS EQUAL RCTRL LCTRL RALT LALT RGUI LGUI RC(H) LC(H) RC(D) LC(D) RA(H) LA(H) RA(D) LA(D) LC(B) RC(B) LC(F) RC(F) LEFT RIGHT
 &num_word { continue-list = <CONTINUE_LIST_NUMWORD>; };
 
 #define DISABLED_MODS_NUMWORD_r MOD_LGUI|MOD_LALT|MOD_LCTL
@@ -188,22 +185,20 @@ ZMK_HOLD_MOD_MORPH_NUM_L(9, F)
 ZMK_HOLD_MOD_MORPH_NUM_L(0, G)
 
 //
-//
 // smart_shift
 //
-// modified from https://github.com/urob/zmk-config
-//
-
-// XXX does not work as intended because modifier inputs immediately take effect to quit the layer and cannot bypass it with modifier + key continuation enabled.
-#define CONTINUE_LIST_SFTWORD BSPC DEL MINUS UNDER RC(H) LC(H) RC(D) LC(D) RA(H) LA(H) RA(D) LA(D) LC(B) RC(B) LC(F) RC(F) LEFT RIGHT
-#define DISABLED_MODS_SFTWORD MOD_LGUI|MOD_LALT|MOD_LCTL|MOD_RGUI|MOD_RALT|MOD_RCTL
 
 // tap: sticky-shift, double tap: shift_word, hold: &mo to specified layer
 #define WINNAV_SMSFT &smart_shift LY_NAV 0
-ZMK_HOLD_TAP(smart_shift, bindings = <&mo>, <&magic_shift_tap>; flavor = "balanced"; tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS_WORD>;)
-ZMK_TAP_DANCE(magic_shift_tap, bindings = <&skq LSHFT>, <&shift_word LY_SFT>; tapping-term-ms = <280>;)
+ZMK_HOLD_TAP(smart_shift, bindings = <&mo_excl>, <&shift_dance>; flavor = "hold-preferred"; tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS_WORD>;)
+ZMK_TAP_DANCE(shift_dance, bindings = <&sl_excl LY_SFT>, <&shift_word_excl LY_SFT>; tapping-term-ms = <TAPPING_TERM_MS_SMART_DANCE>;)
+ZMK_MACRO_ONE_PARAM(shift_word_excl, bindings = <&macro_tap &kp K_CANCEL>, <&macro_param_1to1>, <&macro_tap &shift_word MACRO_PLACEHOLDER>;)
+
+// XXX does not work as intended because modifier inputs immediately take effect to quit the layer and cannot bypass it with modifier + key continuation enabled.
+#define CONTINUE_LIST_SFTWORD BSPC DEL MINUS UNDER RC(H) LC(H) RC(D) LC(D) RA(H) LA(H) RA(D) LA(D) LC(B) RC(B) LC(F) RC(F) LEFT RIGHT
 ZMK_AUTO_LAYER(shift_word, continue-list = <CONTINUE_LIST_SFTWORD>; ignore-alphas;)
 
+#define DISABLED_MODS_SFTWORD MOD_LGUI|MOD_LALT|MOD_LCTL|MOD_RGUI|MOD_RALT|MOD_RCTL
 #define ZMK_MOD_MORPH_SFT_WORD(keyparam) ZMK_MOD_MORPH(sft_##keyparam##, bindings = <&kp LS(##keyparam##)>, <&kp keyparam##>; mods = <(DISABLED_MODS_SFTWORD)>; keep-mods = <(DISABLED_MODS_SFTWORD)>;)
 
 #define ZMK_HOLD_TAP_SFT_R(keyparam) ZMK_HOLD_TAP(r_mmp_##keyparam##, bindings = <&kp>, <&sft_##keyparam>; flavor = "balanced"; tapping-term-ms = <TAPPING_TERM_MS_R>; quick-tap-ms = <QUICK_TAP_MS>; require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_MS_R>; hold-trigger-key-positions = <KEY_POSITIONS_L>; hold-trigger-on-release;)
@@ -253,16 +248,27 @@ ZMK_HOLD_MOD_MORPH_SFT_R(M)
 ZMK_TRI_STATE(swap_app, bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;)
 ZMK_TRI_STATE(swap_win, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;)
 ZMK_TRI_STATE(swap_appwin, bindings = <&kt LALT>, <&kp GRAVE>, <&kt LALT>;)
+ZMK_MOD_MORPH(swaps, bindings = <&swap_win>, <&swap_appwin>; mods = <(MOD_LSFT|MOD_RSFT)>;)
 
-ZMK_COMBO(l_enter, &kp ENTER, 12 13)
-ZMK_COMBO(r_enter, &kp ENTER, 18 19)
-ZMK_COMBO(l_launcher, &kp F5, 13 14)
-ZMK_COMBO(r_launcher, &kp F5, 17 18)
+// Enter key
+ZMK_COMBO(l_enter, &kp RET, 12 13)
+ZMK_COMBO(r_enter, &kp RET, 18 19)
+
+/* #define MED_SPCRET &mo_spcret LY_MED 0 */
+/* ZMK_HOLD_TAP(mo_spcret, bindings = <&mo>, <&spcret>; flavor = "balanced"; tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS_WORD>;) */
+/* ZMK_MOD_MORPH(spcret, bindings = <&kp SPACE>, <&kp RET>; mods = <(MOD_LGUI|MOD_RGUI)>;) */
+
+/* ZMK_COMBO(l_launcher, &kp F5, 13 14) */
+/* ZMK_COMBO(r_launcher, &kp F5, 17 18) */
+
+/* ZMK_COMBO(to_jp, &kp K_TOJP, 24 25) */
+/* ZMK_COMBO(to_en, &kp K_TOEN, 25 23) */
+
 ZMK_COMBO(bksp, &kp BSPC, 8 9)
+
 ZMK_COMBO(l_config, &mo LY_SYS, 22 34)
 ZMK_COMBO(r_config, &mo LY_SYS, 42 33)
-ZMK_COMBO(to_jp, &kp K_TOJP, 24 25)
-ZMK_COMBO(to_en, &kp K_TOEN, 25 23)
+
 ZMK_COMBO(esc, &kp ESCAPE, 0 1)
 ZMK_COMBO(tog_media, &tog 2, 3 4)
 ZMK_COMBO(bt_sel_0, &bt BT_SEL 0, 5 6 7)
@@ -284,33 +290,38 @@ ZMK_COMBO(dict_on_cursor, &kp K_DICT, 23 24 25)
 /* ZMK_MACRO_ONE_PARAM(mkp_l0, bindings = <&macro_press &to LY_DEF>, <&macro_param_1to1>, <&macro_press &mkp MACRO_PLACEHOLDER>, <&macro_pause_for_release>, <&macro_param_1to1>, <&macro_release &mkp MACRO_PLACEHOLDER>, <&macro_press &to LY_SCR>;) // Scroll layer: move pointer on some button pressed */
 /* #define mkp_l0 mkp */
 
-// hold: disable current layer (scroll layer) then keep mkp (for dragging / selection with cursor movement on hold), tap: just mkp
+// hold: disable current layer (scroll layer) then keep mkp (to drag or select with cursor movement on hold), tap: just mkp
 ZMK_HOLD_TAP(mkpl0_mkp, bindings = <&mkp_to_l0>, <&mkp>; flavor = "balanced"; tapping-term-ms = <150>;)
 ZMK_MACRO_ONE_PARAM(mkp_to_l0, bindings = <&macro_tap &to LY_DEF>, <&macro_param_1to1>, <&macro_press &mkp MACRO_PLACEHOLDER>, <&macro_pause_for_release>, <&macro_param_1to1>, <&macro_release &mkp MACRO_PLACEHOLDER>;)
 
-ZMK_MACRO_ONE_PARAM(to_layer_0, bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;)
 ZMK_MACRO(C_x_5_0, bindings = <&kp LC(X)>, <&macro_wait_time 20>, <&kp N5>, <&macro_wait_time 20>, <&kp N0 &kp K_CANCEL>;)
 ZMK_MACRO(C_x_5_2, bindings = <&kp LC(X)>, <&macro_wait_time 20>, <&kp N5>, <&macro_wait_time 20>, <&kp N2 &kp K_CANCEL>;)
+ZMK_MOD_MORPH(cancel_tab, bindings = <&kp K_CANCEL>, <&kp TAB>; mods = <(MOD_LGUI|MOD_LALT|MOD_LCTL|MOD_LSFT|MOD_RGUI|MOD_RALT|MOD_RCTL|MOD_RSFT)>; keep-mods = <(MOD_LGUI|MOD_LALT|MOD_LCTL|MOD_LSFT|MOD_RGUI|MOD_RALT|MOD_RCTL|MOD_RSFT)>;)
 
-ZMK_HOLD_TAP(lt_to_layer_0, bindings = <&mo>, <&to_layer_0>; tapping-term-ms = <200>; flavor = "balanced";)
-ZMK_HOLD_TAP(scrl_mo, bindings = <&mo>, <&kp>; tapping-term-ms = <280>; flavor = "balanced"; quick-tap-ms = <170>; require-prior-idle-ms = <200>; hold-while-undecided; hold-trigger-on-release;)
-ZMK_HOLD_TAP(thm_mo, bindings = <&mo>, <&kp>; tapping-term-ms = <280>; flavor = "hold-preferred"; quick-tap-ms = <200>;)
+//
+// home row mods
+//
+ZMK_HOLD_TAP(scrl_mt, bindings = <&mo>, <&kp>; tapping-term-ms = <280>; flavor = "balanced"; quick-tap-ms = <170>; require-prior-idle-ms = <200>; hold-while-undecided; hold-trigger-on-release;)
 ZMK_HOLD_TAP(l_mt, tapping-term-ms = <TAPPING_TERM_MS_L>; flavor = "balanced"; quick-tap-ms = <QUICK_TAP_MS>; bindings = <&kp>, <&kp>; require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_MS_L>; hold-trigger-key-positions = <KEY_POSITIONS_R>; hold-trigger-on-release;)
 ZMK_HOLD_TAP(r_mt, tapping-term-ms = <280>; flavor = "balanced"; quick-tap-ms = <QUICK_TAP_MS>; bindings = <&kp>, <&kp>;  require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_MS_R>; hold-trigger-key-positions = <KEY_POSITIONS_L>; hold-trigger-on-release;)  // prohibit false-positive mod activation with term-ms
-ZMK_HOLD_TAP(thm_mo_sl, tapping-term-ms = <200>; flavor = "hold-preferred"; quick-tap-ms = <(-1)>; bindings = <&mo>, <&sl>;)
-ZMK_HOLD_TAP(close_or_tap, bindings = <&kp>, <&C_x_5_0>; tapping-term-ms = <200>;)
-
 ZMK_HOLD_TAP(l_mt_sft, tapping-term-ms = <TAPPING_TERM_MS_SFT>; flavor = "balanced"; quick-tap-ms = <QUICK_TAP_MS_SFT>; bindings = <&kp>, <&kp>; require-prior-idle-ms = <220>; hold-trigger-key-positions = <KEY_POSITIONS_R>; hold-trigger-on-release;)
 ZMK_HOLD_TAP(r_mt_sft, tapping-term-ms = <TAPPING_TERM_MS_SFT>; flavor = "balanced"; quick-tap-ms = <QUICK_TAP_MS_SFT>; bindings = <&kp>, <&kp>; require-prior-idle-ms = <220>; hold-trigger-key-positions = <KEY_POSITIONS_L>; hold-trigger-on-release;)
 
-ZMK_MOD_MORPH(cancel_tab, bindings = <&kp K_CANCEL>, <&kp TAB>; mods = <(MOD_LGUI|MOD_LALT|MOD_LCTL|MOD_LSFT|MOD_RGUI|MOD_RALT|MOD_RCTL|MOD_RSFT)>; keep-mods = <(MOD_LGUI|MOD_LALT|MOD_LCTL|MOD_LSFT|MOD_RGUI|MOD_RALT|MOD_RCTL|MOD_RSFT)>;)
+//
+// thumb keys' hold tap
+//
+#define QUICK_TAP_MS_THM       500
+#define TAPPING_TERM_MS_THM_HT 250
+ZMK_HOLD_TAP(thm_mt, bindings = <&mo>, <&kp>; tapping-term-ms = <280>; flavor = "hold-preferred"; quick-tap-ms = <QUICK_TAP_MS_THM>;)
+ZMK_HOLD_TAP(thm_ht_qt, bindings = <&kp>, <&kp>; flavor = "tap-preferred"; tapping-term-ms = <TAPPING_TERM_MS_THM_HT>; quick-tap-ms = <QUICK_TAP_MS_THM>;)
+ZMK_HOLD_TAP(thm_ht, bindings = <&kp>, <&kp>; flavor = "tap-preferred"; tapping-term-ms = <TAPPING_TERM_MS_THM_HT>;)
 
 //
 // Suppress cmd-w
 //
 // XXX does not work properly, karabiner-elements interference?
 // https://zmk.dev/docs/keymaps/behaviors/mod-morph
-ZMK_MOD_MORPH(mrp_cmd_w, bindings = <&kp W>, <&kp RA(W)>; mods = <(MOD_LGUI|MOD_RGUI)>;)
+/* ZMK_MOD_MORPH(mrp_cmd_w, bindings = <&kp W>, <&kp RA(W)>; mods = <(MOD_LGUI|MOD_RGUI)>;) */
 
 // combos for symbol
 //
@@ -354,10 +365,10 @@ ZMK_COMBO(tilde, &kp TILDE, 23 35)
 
         default_layer {
             bindings = <
-&kp Q          &kp W         &kp E          &kp R         &kp T                                              &kp Y                 &kp U          &kp I          &kp O         &kp P
-&scrl_mo 4 A   &l_mt LGUI S  &l_mt LCTRL D  &l_mt LALT F  &kp G                 &kp LBKT        &kp MINUS    &kp H                 &r_mt RALT J   &r_mt RCTRL K  &r_mt RGUI L  &scrl_mo LY_SCR SEMI
-&l_mt LSHFT Z  &kp X         &kp C          &kp V         &kp B                 &kp RBKT        &kp EQUAL    &kp N                 &kp M          &kp COMMA      &kp DOT       &r_mt RSHFT SLASH
-&cancel_tab    &kp GRAVE     &kp SQT        WINNAV_SMSFT  &thm_mo LY_MED SPACE  SMART_NUM       SMART_NUM    &thm_mo LY_MED SPACE                                              &kp BSLH
+&kp Q          &kp W         &kp E          &kp R         &kp T                                           &kp Y                 &kp U          &kp I          &kp O         &kp P
+&scrl_mt 4 A   &l_mt LGUI S  &l_mt LCTRL D  &l_mt LALT F  &kp G               &kp LBKT         &kp MINUS  &kp H                 &r_mt RALT J   &r_mt RCTRL K  &r_mt RGUI L  &scrl_mt LY_SCR SEMI
+&l_mt LSHFT Z  &kp X         &kp C          &kp V         &kp B               &kp RBKT         &kp EQUAL  &kp N                 &kp M          &kp COMMA      &kp DOT       &r_mt RSHFT SLASH
+&cancel_tab    &kp GRAVE     &kp SQT        WINNAV_SMSFT  &thm_mt LY_MED RET  SMART_NUM        SMART_NUM  &thm_mt LY_MED SPACE
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
@@ -365,20 +376,20 @@ ZMK_COMBO(tilde, &kp TILDE, 23 35)
 
         NUM {
             bindings = <
-&l_n1        &l_n2              &l_n3               &l_n4              &l_n5                        &r_n1   &r_n2              &r_n3               &r_n4              &r_n5
-&l_n6        &l_mmp_n7 LGUI N7  &l_mmp_n8 LCTRL N8  &l_mmp_n9 LALT N9  &l_n0   &trans       &trans  &r_n6   &r_mmp_n7 RALT N7  &r_mmp_n8 RCTRL N8  &r_mmp_n9 RGUI N9  &r_n0
-&trans       &trans             &trans              &trans             &trans  &trans       &trans  &trans  &trans             &trans              &trans             &trans
-&cancel_tab  &trans             &trans              &trans             &trans  &trans       &trans  &trans                                                            &trans
+&l_n1        &l_n2              &l_n3               &l_n4              &l_n5                                           &r_n1                      &r_n2              &r_n3               &r_n4              &r_n5
+&l_n6        &l_mmp_n7 LGUI N7  &l_mmp_n8 LCTRL N8  &l_mmp_n9 LALT N9  &l_n0                    &trans         &trans  &r_n6                      &r_mmp_n7 RALT N7  &r_mmp_n8 RCTRL N8  &r_mmp_n9 RGUI N9  &r_n0
+&trans       &trans             &trans              &trans             &trans                   &trans         &trans  &trans                     &trans             &trans              &trans             &trans
+&cancel_tab  &trans             &trans              &trans             &thm_ht_qt K_CANCEL RET  &trans         &trans  &thm_ht_qt K_CANCEL SPACE                                                            &trans
             >;
         };
 
         // Mainly for l: media, r: move
         MEDIA {
             bindings = <
-&kp K_TABP  &kp LG(W)     &kp C_PREV    &kp C_NEXT   &kp C_PP                                   &kp K_WDBK  &kp K_WDFW  &kp K_PTBK  &kp K_PTFW  &kp K_TABP
-&kp LEFT    &kp DOWN      &kp UP        &kp RIGHT    &kp KD_BRTR   &kp K_CBWD       &kp K_CBWD  &kp K_HBWD  &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT
-&kp K_TABN  &kp KM_PLAY   &kp KM_BKWD   &kp KM_FRWD  &kp KD_DMMR   &kp K_CFWD       &kp K_CFWD  &kp K_HFWD  &kp K_PGDN  &kp K_PGUP  &kp K_BEG   &kp K_END
-&kp K_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &trans       &kp K_TOEN    &trans           &trans      &kp K_TOJP                                      &kp K_TABN
+&kp K_TABP  &kp LG(W)     &kp C_PREV    &kp C_NEXT   &kp C_PP                                              &kp K_WDBK               &kp K_WDFW  &kp K_PTBK  &kp K_PTFW  &kp K_TABP
+&kp LEFT    &kp DOWN      &kp UP        &kp RIGHT    &kp KD_BRTR              &kp K_CBWD       &kp K_CBWD  &kp K_HBWD               &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT
+&kp K_TABN  &kp KM_PLAY   &kp KM_BKWD   &kp KM_FRWD  &kp KD_DMMR              &kp K_CFWD       &kp K_CFWD  &kp K_HFWD               &kp K_PGDN  &kp K_PGUP  &kp K_BEG   &r_mt RSHFT K_END
+&kp K_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &swaps       &thm_ht K_CANCEL K_TOEN  &kp F5           &kp F5      &thm_ht K_CANCEL K_TOJP                                      &kp K_TABN
             >;
         };
 
@@ -420,10 +431,10 @@ ZMK_COMBO(tilde, &kp TILDE, 23 35)
 
         SFT_ALPHA {
             bindings = <
-&sft_Q                &sft_W               &sft_E                &sft_R               &sft_T                                           &sft_Y                &sft_U               &sft_I                &sft_O               &sft_P
-&sft_A                &l_mmp_S LGUI LS(S)  &l_mmp_D LCTRL LS(D)  &l_mmp_F LALT LS(F)  &sft_G                &kp LBKT        &kp MINUS  &sft_H                &r_mmp_J RALT LS(J)  &r_mmp_K RCTRL LS(K)  &r_mmp_L RGUI LS(L)  &kp SEMI
-&l_mmp_Z LSHFT LS(Z)  &sft_X               &sft_C                &sft_V               &sft_B                &kp RBKT        &kp EQUAL  &sft_N                &sft_M               &kp COMMA             &kp DOT              &r_mt RSHFT SLASH
-&cancel_tab           &kp GRAVE            &kp SQT               WINNAV_SMSFT         &thm_mo LY_MED SPACE  SMART_NUM       SMART_NUM  &thm_mo LY_MED SPACE                                                                  &kp BSLH
+&sft_Q                &sft_W               &sft_E                &sft_R               &sft_T                                              &sft_Y                       &sft_U               &sft_I                &sft_O               &sft_P
+&sft_A                &l_mmp_S LGUI LS(S)  &l_mmp_D LCTRL LS(D)  &l_mmp_F LALT LS(F)  &sft_G                   &kp LBKT        &kp MINUS  &sft_H                       &r_mmp_J RALT LS(J)  &r_mmp_K RCTRL LS(K)  &r_mmp_L RGUI LS(L)  &kp SEMI
+&l_mmp_Z LSHFT LS(Z)  &sft_X               &sft_C                &sft_V               &sft_B                   &kp RBKT        &kp EQUAL  &sft_N                       &sft_M               &kp COMMA             &kp DOT              &r_mt RSHFT SLASH
+&cancel_tab           &kp GRAVE            &kp SQT               &trans               &thm_ht_qt K_CANCEL RET  &trans          &trans     &thm_ht_qt K_CANCEL SPACE                                                                    &kp BSLH
             >;
         };
     };
